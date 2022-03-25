@@ -2,11 +2,16 @@ import { randomUUID } from 'crypto'
 import enquirer from 'enquirer'
 import { logger } from '@poppinss/cliui'
 import { JikeClient } from 'jike-sdk/node'
+import { createCommand } from 'commander'
 import { errorAndExit } from '../../utils/log'
 import { config, isSameUser } from '../../utils/config'
 import type { ConfigUser } from '../../utils/config'
 
-export const login = async () => {
+export const login = createCommand('login')
+  .description('login or re-login a user')
+  .action(() => loginUser())
+
+export const loginUser = async () => {
   const apiConfig = await enquirer.prompt<{
     endpointId: string
     endpointUrl: string

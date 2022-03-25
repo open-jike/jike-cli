@@ -2,21 +2,16 @@ import { createCommand } from 'commander'
 import { list } from './list'
 import { login } from './login'
 import { logout } from './logout'
+import { profile } from './profile'
 import { renew } from './renew'
+import { view } from './view'
 
 export const user = createCommand('user')
   .description('manager users')
   .usage('<command> [flags]')
-
-user.command('list').alias('ls').description('print user list').action(list)
-user.command('login').description('login or re-login a user').action(login)
-user
-  .command('logout [users...]')
-  .description('logout users')
-  .usage('account1 [account2...]')
-  .action(logout)
-user
-  .command('renew')
-  .description('refresh user info and token')
-  .alias('refresh')
-  .action(renew)
+  .addCommand(renew)
+  .addCommand(login)
+  .addCommand(logout)
+  .addCommand(list)
+  .addCommand(profile)
+  .addCommand(view)

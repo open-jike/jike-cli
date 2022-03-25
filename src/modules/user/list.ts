@@ -1,7 +1,13 @@
 import { table } from '@poppinss/cliui'
+import { createCommand } from 'commander'
 import { config } from '../../utils/config'
 
-export const list = () => {
+export const list = createCommand('list')
+  .alias('ls')
+  .description('print user list')
+  .action(() => listUsers())
+
+export const listUsers = () => {
   const t = table().head([
     'Alias',
     'Endpoint ID',
