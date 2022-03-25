@@ -15,6 +15,7 @@
     "access": "public"
   },
   "scripts": {
+    "dev": "esno src/index.ts",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --fix --ext .vue,.js,.ts,.jsx,.tsx",
     "build": "tsup && esno scripts/postbuild.ts",
@@ -22,7 +23,11 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "jike-sdk": "^0.7.0"
+    "@poppinss/cliui": "^3.0.1",
+    "@vue-reactivity/fs": "^0.1.1",
+    "commander": "^9.1.0",
+    "enquirer": "^2.3.6",
+    "jike-sdk": "^0.7.3"
   },
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^2.1.0",

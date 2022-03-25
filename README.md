@@ -1,6 +1,6 @@
 # jike-cli [![npm](https://img.shields.io/npm/v/jike-cli.svg)](https://npmjs.com/package/jike-cli)
 
-[![Unit Test](https://github.com/sxzz/jike-cli/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/jike-cli/actions/workflows/unit-test.yml)
+[![Unit Test](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml/badge.svg)](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml)
 
 ## Install
 
