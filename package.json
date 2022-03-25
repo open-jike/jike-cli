@@ -7,6 +7,10 @@
     "url": "https://github.com/open-jike/jike-cli#issues"
   },
   "license": "MIT",
+  "files": [
+    "dist",
+    "bin"
+  ],
   "main": "./dist/index.js",
   "bin": "./bin/jike-cli.js",
   "repository": {
