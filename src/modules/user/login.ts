@@ -3,27 +3,23 @@ import { prompt } from 'enquirer'
 import { logger } from '@poppinss/cliui'
 import { errorAndExit } from '../../utils/log'
 import { config, isSameUser } from '../../utils/config'
+import type { JikeClient } from 'jike-sdk/node'
 import type { ConfigUser } from '../../utils/config'
 
 export const login = async () => {
-  interface Answers {
+  const apiConfig = await prompt<{
     endpointId: string
     endpointUrl: string
     bundleId: string
     appVersion: string
     buildNo: string
     userAgent: string
-    areaCode: string
-    mobile: string
-    password: string
-    alias: string
-  }
-  const answers = await prompt<Answers>([
+  }>([
     {
       type: 'input',
       name: 'endpointId',
       message: 'What is the endpoint id?',
-      initial: process.env.API_ENDPOINT_ID,
+      initial: process.env.API_ENDPOINT_ID || 'jike',
     },
     {
       type: 'input',
@@ -55,69 +51,59 @@ export const login = async () => {
       message: 'What is the user agent?',
       initial: process.env.API_USER_AGENT,
     },
-    {
-      type: 'input',
-      name: 'areaCode',
-      message: 'What is your mobile phone area code?',
-      initial: '86',
-      validate: (value: string) => /^\d+$/.test(value),
-    },
-    {
-      type: 'input',
-      name: 'mobile',
-      message: 'What is your mobile phone?',
-      validate: (value: string) => /^\d+$/.test(value),
-      initial: process.env.API_MOBILE,
-    },
-    {
-      type: 'password',
-      name: 'password',
-      message: 'What is your password?',
-      initial: process.env.API_PASSWORD,
-    },
-    {
-      type: 'input',
-      name: 'alias',
-      message: 'Do you want to set an alias for this user? (not required)',
-      required: false,
-    },
   ])
+
+  const { JikeClient } = await import('jike-sdk/node')
 
   const deviceId = randomUUID()
   const idfv = randomUUID()
 
-  const { JikeClient } = await import('jike-sdk/node')
   const client = new JikeClient({
-    endpointId: answers.endpointId,
-    endpointUrl: answers.endpointUrl,
-    bundleId: answers.bundleId,
-    appVersion: answers.appVersion,
-    buildNo: answers.buildNo,
-    userAgent: answers.userAgent,
+    ...apiConfig,
     deviceId,
     idfv,
   })
 
-  await client
-    .loginWithPassword(answers.areaCode, answers.mobile, answers.password)
-    .catch((err) => errorAndExit(new Error(err)))
+  type LoginMethod = 'mobile-password' | 'mobile-sms'
+  const { loginMethod } = await prompt<{ loginMethod: LoginMethod }>({
+    name: 'loginMethod',
+    message: 'What is your preferred login method?',
+    type: 'select',
+    choices: [
+      { name: 'mobile-password', message: 'Mobile phone and password' },
+      { name: 'mobile-sms', message: 'Mobile phone and SMS code' },
+    ],
+  })
+
+  switch (loginMethod) {
+    case 'mobile-password':
+      await loginWithPassword(client)
+      break
+    case 'mobile-sms':
+      await loginWithSms(client)
+      break
+    default:
+      errorAndExit(new Error('Unknown login method'))
+  }
+
+  const { alias } = await prompt<{ alias: string }>({
+    type: 'input',
+    name: 'alias',
+    message: 'Do you want to set an alias for this user? (not required)',
+    required: false,
+  })
 
   // Save Auth
   const profile = await client.getSelf().queryProfile()
   const user: ConfigUser = {
-    endpointId: answers.endpointId,
-    endpointUrl: answers.endpointUrl,
-    bundleId: answers.bundleId,
-    appVersion: answers.appVersion,
-    buildNo: answers.buildNo,
-    userAgent: answers.userAgent,
+    ...apiConfig,
     accessToken: client.accessToken,
     refreshToken: client.refreshToken,
     deviceId,
     idfv,
     userId: profile.user.id,
     screenName: profile.user.screenName,
-    alias: answers.alias.trim(),
+    alias: alias.trim(),
   }
   const index = config.value.users.findIndex((_auth) => isSameUser(user, _auth))
   if (index > -1) {
@@ -127,4 +113,68 @@ export const login = async () => {
   }
 
   logger.success('Login success!')
+}
+
+const questions = {
+  areaCode: {
+    type: 'input',
+    name: 'areaCode',
+    message: 'What is your mobile phone area code?',
+    initial: '86',
+    validate: (value: string) => /^\d+$/.test(value),
+  },
+  mobile: {
+    type: 'input',
+    name: 'mobile',
+    message: 'What is your mobile phone?',
+    validate: (value: string) => /^\d+$/.test(value),
+    initial: process.env.API_MOBILE,
+  },
+}
+
+const loginWithPassword = async (client: JikeClient) => {
+  interface Auth {
+    areaCode: string
+    mobile: string
+    password: string
+  }
+
+  const { areaCode, mobile, password } = await prompt<Auth>([
+    questions.areaCode,
+    questions.mobile,
+    {
+      type: 'password',
+      name: 'password',
+      message: 'What is your password?',
+      initial: process.env.API_PASSWORD,
+    },
+  ])
+
+  await client
+    .loginWithPassword(areaCode, mobile, password)
+    .catch((err) => errorAndExit(new Error(err)))
+}
+
+const loginWithSms = async (client: JikeClient) => {
+  const { areaCode, mobile } = await prompt<{
+    areaCode: string
+    mobile: string
+  }>([questions.areaCode, questions.mobile])
+
+  await client
+    .sendSmsCode(areaCode, mobile)
+    .catch((err) => errorAndExit(new Error(err)))
+
+  logger.success('SMS code sent!')
+
+  const { smsCode } = await prompt<{ smsCode: string }>({
+    type: 'input',
+    name: 'smsCode',
+    message: 'What is the SMS code?',
+    validate: (value: string) => /^\d{6}$/.test(value),
+  })
+
+  await client
+    .loginWithSmsCode(areaCode, mobile, smsCode)
+    .catch((err) => errorAndExit(new Error(err)))
 }
