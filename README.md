@@ -2,11 +2,29 @@
 
 [![Unit Test](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml/badge.svg)](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml)
 
-## Install
+## Installation
 
 ```bash
-npm i jike-cli
+$ npm i -g jike-cli
 ```
+
+## Usage
+
+```bash
+$ jike-cli --help
+```
+
+### User
+
+```bash
+$ jike-cli user login # 登录
+$ jike-cli user logout # 退出
+$ jike-cli user renew # 刷新 token
+$ jike-cli user profile # 查看用户主页
+$ jike-cli user view # 在浏览器中打开网页版
+```
+
+For more details, please use `help` command.
 
 ## License
 

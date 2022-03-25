@@ -17,7 +17,7 @@ export interface ProfileOptions {
 }
 
 export const profile = createCommand('profile')
-  .argument('[username]')
+  .argument('[username]', 'the username of user')
   .description('query user profile')
   .option('-r, --raw', 'output raw data')
   .option('-p, --pretty', 'pretty raw data')

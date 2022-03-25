@@ -7,7 +7,18 @@ import { renew } from './renew'
 import { view } from './view'
 
 export const user = createCommand('user')
-  .description('manager users')
+  .description('user-related operations')
+  .addHelpText(
+    'after',
+    `
+
+Example call:
+  $ jike-cli user login
+  $ jike-cli user profile 82D23B32-CF36-4C59-AD6F-D05E3552CBF3
+  $ jike-cli user renew
+  $ jike-cli user view 82D23B32-CF36-4C59-AD6F-D05E3552CBF3
+`
+  )
   .usage('<command> [flags]')
   .addCommand(renew)
   .addCommand(login)
