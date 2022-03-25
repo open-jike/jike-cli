@@ -1,9 +1,8 @@
 import { logger } from '@poppinss/cliui'
+import { JikeClient } from 'jike-sdk/node'
 import { filterUsers } from '../../utils/options'
 
 export const renew = async () => {
-  const { JikeClient } = await import('jike-sdk/node')
-
   const users = filterUsers()
 
   for (const user of users) {

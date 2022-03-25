@@ -1,13 +1,13 @@
 import { randomUUID } from 'crypto'
-import { prompt } from 'enquirer'
+import enquirer from 'enquirer'
 import { logger } from '@poppinss/cliui'
+import { JikeClient } from 'jike-sdk/node'
 import { errorAndExit } from '../../utils/log'
 import { config, isSameUser } from '../../utils/config'
-import type { JikeClient } from 'jike-sdk/node'
 import type { ConfigUser } from '../../utils/config'
 
 export const login = async () => {
-  const apiConfig = await prompt<{
+  const apiConfig = await enquirer.prompt<{
     endpointId: string
     endpointUrl: string
     bundleId: string
@@ -53,8 +53,6 @@ export const login = async () => {
     },
   ])
 
-  const { JikeClient } = await import('jike-sdk/node')
-
   const deviceId = randomUUID()
   const idfv = randomUUID()
 
@@ -65,7 +63,7 @@ export const login = async () => {
   })
 
   type LoginMethod = 'mobile-password' | 'mobile-sms'
-  const { loginMethod } = await prompt<{ loginMethod: LoginMethod }>({
+  const { loginMethod } = await enquirer.prompt<{ loginMethod: LoginMethod }>({
     name: 'loginMethod',
     message: 'What is your preferred login method?',
     type: 'select',
@@ -86,7 +84,7 @@ export const login = async () => {
       errorAndExit(new Error('Unknown login method'))
   }
 
-  const { alias } = await prompt<{ alias: string }>({
+  const { alias } = await enquirer.prompt<{ alias: string }>({
     type: 'input',
     name: 'alias',
     message: 'Do you want to set an alias for this user? (not required)',
@@ -139,7 +137,7 @@ const loginWithPassword = async (client: JikeClient) => {
     password: string
   }
 
-  const { areaCode, mobile, password } = await prompt<Auth>([
+  const { areaCode, mobile, password } = await enquirer.prompt<Auth>([
     questions.areaCode,
     questions.mobile,
     {
@@ -156,7 +154,7 @@ const loginWithPassword = async (client: JikeClient) => {
 }
 
 const loginWithSms = async (client: JikeClient) => {
-  const { areaCode, mobile } = await prompt<{
+  const { areaCode, mobile } = await enquirer.prompt<{
     areaCode: string
     mobile: string
   }>([questions.areaCode, questions.mobile])
@@ -167,7 +165,7 @@ const loginWithSms = async (client: JikeClient) => {
 
   logger.success('SMS code sent!')
 
-  const { smsCode } = await prompt<{ smsCode: string }>({
+  const { smsCode } = await enquirer.prompt<{ smsCode: string }>({
     type: 'input',
     name: 'smsCode',
     message: 'What is the SMS code?',

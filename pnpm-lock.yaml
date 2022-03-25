@@ -11,7 +11,7 @@ specifiers:
   enquirer: ^2.3.6
   eslint: ^8.11.0
   eslint-define-config: ^1.3.0
-  esno: ^0.14.1
+  esmo: ^0.14.1
   fast-glob: ^3.2.11
   jike-sdk: ^0.7.3
   prettier: ^2.6.0
@@ -32,7 +32,7 @@ devDependencies:
   bumpp: 7.1.1
   eslint: 8.11.0
   eslint-define-config: 1.3.0
-  esno: 0.14.1
+  esmo: 0.14.1
   fast-glob: 3.2.11
   prettier: 2.6.0
   tsup: 5.12.1_typescript@4.6.2
@@ -1277,8 +1277,8 @@ packages:
       - supports-color
     dev: true
 
-  /esno/0.14.1:
-    resolution: {integrity: sha512-yDFYw6dGUjCT1qKsdG7WOc/RzIh/qwxUEVZ+ohCltaxBxEFMNqeqbQL9xjRl6Yvdwrfc5OCjUA9JbFmuu/8BKg==}
+  /esmo/0.14.1:
+    resolution: {integrity: sha512-zx48iHEWEzhouF6wXSRbO8+KuDH5QWy30qVk0EE/olYxIA4ZPySfUkqxh7tDUBizUROzdyjWmCdSDJa+3pb+9Q==}
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3

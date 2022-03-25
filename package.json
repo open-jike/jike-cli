@@ -2,6 +2,7 @@
   "name": "jike-cli",
   "version": "0.0.4",
   "description": "Jike CLI",
+  "type": "module",
   "homepage": "https://github.com/open-jike/jike-cli#readme",
   "bugs": {
     "url": "https://github.com/open-jike/jike-cli#issues"
@@ -21,7 +22,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "esno src/index.ts",
+    "dev": "esmo src/index.ts",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --fix --ext .vue,.js,.ts,.jsx,.tsx",
     "build": "tsup",
@@ -42,7 +43,7 @@
     "bumpp": "^7.1.1",
     "eslint": "^8.11.0",
     "eslint-define-config": "^1.3.0",
-    "esno": "^0.14.1",
+    "esmo": "^0.14.1",
     "fast-glob": "^3.2.11",
     "prettier": "^2.6.0",
     "tsup": "^5.12.1",
