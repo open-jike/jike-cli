@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-require('../dist')
+/* eslint-disable unicorn/import-index */
+import '../dist/index.js'
