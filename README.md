@@ -10,4 +10,4 @@ npm i jike-cli
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [三咲智子](https://github.com/sxzz)
+[AGPL-3.0](./LICENSE) License © 2022-PRESENT [三咲智子](https://github.com/sxzz)
