@@ -25,7 +25,6 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --fix --ext .vue,.js,.ts,.jsx,.tsx",
     "build": "tsup",
-    "test": "vitest",
     "release": "bumpp --commit --push --tag && npm publish",
     "prepublishOnly": "pnpm run build"
   },
@@ -47,7 +46,6 @@
     "fast-glob": "^3.2.11",
     "prettier": "^2.6.0",
     "tsup": "^5.12.1",
-    "typescript": "^4.6.2",
-    "vitest": "^0.7.10"
+    "typescript": "^4.6.2"
   }
 }
