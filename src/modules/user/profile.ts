@@ -88,11 +88,7 @@ export const queryProfile = async ({
       ],
       [createdAtStr, `${colors.bold(createdDays)} 天`],
       [],
-      [
-        result.user.zodiac,
-        result.user.industry || '',
-        result.user.school?.name || '',
-      ],
+      result.user.profileTags.map((tag) => tag.text),
       [
         `${colors.bold(`${result.user.statsCount.followingCount}`)} 关注`,
         `${formatFollowedCount(result.user.statsCount.followedCount)} 被关注`,
