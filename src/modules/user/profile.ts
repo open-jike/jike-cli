@@ -73,11 +73,11 @@ export const queryProfile = async ({
     profile: ApiResponses.Users.Profile
   ): profile is ApiResponses.Users.MyProfile => profile.user.id === user.userId
 
-  if (isTable) {
-    showTable()
-  } else {
-    showText()
-  }
+  const formatFollowedCount = (count: number) =>
+    colors.bold(count === 100000 ? colors.red('99999+') : `${count}`)
+
+  if (isTable) showTable()
+  else showText()
 
   function showText() {
     const texts: string[][] = [
@@ -95,7 +95,7 @@ export const queryProfile = async ({
       ],
       [
         `${colors.bold(`${result.user.statsCount.followingCount}`)} 关注`,
-        `${colors.bold(`${result.user.statsCount.followedCount}`)} 被关注`,
+        `${formatFollowedCount(result.user.statsCount.followedCount)} 被关注`,
         `${colors.bold(`${result.user.statsCount.respectedCount}`)} 夸夸`,
       ],
       [],
