@@ -1,6 +1,6 @@
 {
   "name": "jike-cli",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Jike CLI",
   "type": "module",
   "homepage": "https://github.com/open-jike/jike-cli#readme",
