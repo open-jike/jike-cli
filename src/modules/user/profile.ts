@@ -17,6 +17,7 @@ export interface ProfileOptions {
 }
 
 export const profile = createCommand('profile')
+  .alias('p')
   .argument('[username]', 'the username of user')
   .description('query user profile')
   .option('-r, --raw', 'output raw data')
@@ -110,7 +111,20 @@ export const queryProfile = async ({
 
     texts.push(
       [],
-      [colors.underline(`https://web.okjike.com/u/${result.user.username}`)]
+      [
+        '   Web',
+        colors.underline(`https://web.okjike.com/u/${result.user.username}`),
+      ],
+      [
+        'Mobile',
+        colors.underline(`https://m.okjike.com/users/${result.user.username}`),
+      ],
+      process.platform === 'darwin'
+        ? [
+            ' macOS',
+            colors.underline(`jike://page.jk/user/${result.user.username}`),
+          ]
+        : []
     )
 
     const lines = texts.flatMap((fields) =>
