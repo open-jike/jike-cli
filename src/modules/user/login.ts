@@ -96,16 +96,9 @@ export const loginUser = async () => {
     required: false,
   })
 
-  // Save Auth
-  const profile = await client.getSelf().queryProfile()
+  // Save
   const user: ConfigUser = {
-    ...apiConfig,
-    accessToken: client.accessToken,
-    refreshToken: client.refreshToken,
-    deviceId,
-    idfv,
-    userId: profile.user.id,
-    screenName: profile.user.screenName,
+    ...(await client.toJSON()),
     alias: alias.trim(),
   }
   const index = config.value.users.findIndex((_auth) => isSameUser(user, _auth))

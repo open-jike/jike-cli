@@ -1,6 +1,5 @@
 import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
-import { JikeClient } from 'jike-sdk/node'
 import { config } from './config'
 import { errorAndExit } from './log'
 import type { ConfigUser } from './config'
@@ -34,16 +33,4 @@ export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
   return users
 }
 
-export const createClient = (user: ConfigUser) =>
-  new JikeClient({
-    endpointId: user.endpointId,
-    endpointUrl: user.endpointUrl,
-    bundleId: user.bundleId,
-    appVersion: user.appVersion,
-    buildNo: user.buildNo,
-    userAgent: user.userAgent,
-    accessToken: user.accessToken,
-    refreshToken: user.refreshToken,
-    deviceId: user.deviceId,
-    idfv: user.idfv,
-  })
+export const displayUser = (user: ConfigUser) => user.alias || user.screenName

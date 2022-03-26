@@ -2,7 +2,7 @@ import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { config, isSameUser } from '../../utils/config'
 import { errorAndExit } from '../../utils/log'
-import { filterUsers } from '../../utils/user'
+import { displayUser, filterUsers } from '../../utils/user'
 
 export const logout = createCommand('logout [users...]')
   .description('logout users')
@@ -19,8 +19,7 @@ export const logoutUser = (queries: string[]) => {
   cfg.users = cfg.users.filter((user) => {
     const shouldRemove = removes.some((remove) => isSameUser(user, remove))
     if (shouldRemove) {
-      const userName = user.alias || user.screenName
-      logger.success(`Logout ${userName}.`)
+      logger.success(`Logout ${displayUser(user)}.`)
     }
     return !shouldRemove
   })

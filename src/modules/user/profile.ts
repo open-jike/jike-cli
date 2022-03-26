@@ -4,7 +4,8 @@ import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
 import fetch from 'node-fetch'
 import terminalImage from 'terminal-image'
-import { createClient, filterUsers } from '../../utils/user'
+import { JikeClient } from 'jike-sdk/node'
+import { filterUsers } from '../../utils/user'
 import type { ApiResponses } from 'jike-sdk/node'
 
 const { colors } = logger
@@ -34,7 +35,7 @@ export const queryProfile = async ({
   table: isTable,
 }: ProfileOptions) => {
   const [user] = filterUsers()
-  const client = createClient(user)
+  const client = JikeClient.fromJSON(user)
 
   let result: ApiResponses.Users.Profile
   if (username) {

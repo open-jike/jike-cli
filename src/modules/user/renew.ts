@@ -1,6 +1,7 @@
 import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
-import { createClient, filterUsers } from '../../utils/user'
+import { JikeClient } from 'jike-sdk/node'
+import { displayUser, filterUsers } from '../../utils/user'
 
 export const renew = createCommand('renew')
   .description('refresh user info and token')
@@ -11,9 +12,9 @@ export const renewUsers = async () => {
   const users = filterUsers()
 
   for (const user of users) {
-    const userName = user.alias || user.screenName
+    const userName = displayUser(user)
     const spinner = logger.await(`Renew user: ${userName}`)
-    const client = createClient(user) //new JikeClient({ ...user })
+    const client = JikeClient.fromJSON(user)
     try {
       await client.renewToken().finally(() => spinner.stop())
     } catch (err: any) {
