@@ -11,11 +11,16 @@ interface NotificationOptions {
   avatar?: boolean
   image?: boolean
   count?: number
+  // TODO move to global options
+  raw?: number
+  pretty?: number
 }
 
 export const msg = createCommand('msg')
   .description('display notifications')
   .aliases(['message', 'notification'])
+  .option('-r, --raw', 'output raw data', false)
+  .option('-p, --pretty', 'format raw data', false)
   .option('--no-avatar', 'do not show avatar')
   .option('--no-image', 'do not show image')
   .option('-c, --count <count>', 'notification max count', '30')
@@ -45,6 +50,13 @@ const showNotifications = async (opts: NotificationOptions) => {
     .finally(() => spinner.stop())
 
   logger.success('Loading notifications done!')
+
+  if (opts.raw) {
+    process.stdout.write(
+      `${JSON.stringify(notifications, null, opts.pretty ? 2 : 0)}\n`
+    )
+    return
+  }
 
   {
     const divider = logger.colors.gray('─'.repeat(process.stdout.columns || 30))
