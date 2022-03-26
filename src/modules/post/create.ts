@@ -6,26 +6,27 @@ import { ApiOptions, JikeClient } from 'jike-sdk/node'
 import { format } from 'date-fns'
 import { logger, sticker } from '@poppinss/cliui'
 import enquirer from 'enquirer'
-import { configDir } from '../utils/config'
-import { displayUser, filterUsers } from '../utils/user'
-import { errorAndExit } from '../utils/log'
+import { configDir } from '../../utils/config'
+import { displayConfigUser, filterUsers } from '../../utils/user'
+import { errorAndExit } from '../../utils/log'
 
-interface PostOptions {
+interface CreateOptions {
   content?: string
   topic?: string
 }
 
-export const post = createCommand('post')
+export const create = createCommand('create')
+  .alias('new')
   .description('send a post')
   .option('-c, --content <content>', 'the content you want to post')
   .option('-t, --topic <topicId>', 'topic id')
   .action(() => {
-    const opts = post.opts<PostOptions>()
+    const opts = create.opts<CreateOptions>()
     createPost(opts)
   })
 
 /** 发布动态 */
-export const createPost = async ({ content, topic }: PostOptions) => {
+export const createPost = async ({ content, topic }: CreateOptions) => {
   const users = filterUsers()
 
   if (!content) {
@@ -56,7 +57,7 @@ export const createPost = async ({ content, topic }: PostOptions) => {
     type: 'confirm',
     name: 'isConfirm',
     message: `Are you sure to send the above with accounts ${users
-      .map((user) => displayUser(user))
+      .map((user) => displayConfigUser(user))
       .join(', ')}?`,
     initial: true,
   })
@@ -73,7 +74,7 @@ export const createPost = async ({ content, topic }: PostOptions) => {
       })
       .catch((err) => logger.fatal(err))
     logger.success(
-      `${logger.colors.bold(displayUser(user))} posted successfully!`
+      `${logger.colors.bold(displayConfigUser(user))} posted successfully!`
     )
   }
 }

@@ -14,7 +14,7 @@ specifiers:
   eslint-define-config: ^1.3.0
   esmo: ^0.14.1
   fast-glob: ^3.2.11
-  jike-sdk: ^0.10.0
+  jike-sdk: ^0.10.2
   node-fetch: ^3.2.3
   open: ^8.4.0
   prettier: ^2.6.1
@@ -27,7 +27,7 @@ dependencies:
   '@vue-reactivity/fs': 0.1.1
   commander: 9.1.0
   enquirer: 2.3.6
-  jike-sdk: 0.10.0
+  jike-sdk: 0.10.2
   node-fetch: 3.2.3
   open: 8.4.0
   terminal-image: 2.0.0
@@ -2663,8 +2663,8 @@ packages:
       plist: 3.0.5
     dev: false
 
-  /jike-sdk/0.10.0:
-    resolution: {integrity: sha512-KV7uLCe46GbY/Jd0UgkR0CkV6+rlBv+R/XZaA6cAM9EA+4SD5WBjdzaXE8svBy3iiBmb4Z2UQWyOlQcwJh5Pww==}
+  /jike-sdk/0.10.2:
+    resolution: {integrity: sha512-ceShiS5bGbBRnk9ejIZYB+NIUN20mr+Xrcy2IiH8KmcqO23aiiMztwW97EN/SHxf6Oo8fLZs8F156rYh0WgTRg==}
     engines: {node: '>=14.17.0'}
     dependencies:
       ky: 0.30.0

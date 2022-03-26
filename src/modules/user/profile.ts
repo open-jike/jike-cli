@@ -2,10 +2,9 @@ import process from 'process'
 import { createCommand } from 'commander'
 import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
-import fetch from 'node-fetch'
-import terminalImage from 'terminal-image'
 import { JikeClient } from 'jike-sdk/node'
 import { filterUsers } from '../../utils/user'
+import { displayImage } from '../../utils/terminal'
 import type { ApiResponses } from 'jike-sdk/node'
 
 const { colors } = logger
@@ -49,17 +48,9 @@ export const queryProfile = async ({
     return
   }
 
-  const avatarResponse = await fetch(result.user.avatarImage.middlePicUrl)
-    .then((res) => res.arrayBuffer())
-    .then((ab) => Buffer.from(ab))
-  const avatar = await terminalImage.buffer(avatarResponse, {
-    height: 8,
-    preserveAspectRatio: true,
-  })
-  process.stdout.write(`${avatar}\n`)
+  await displayImage(result.user.avatarImage.middlePicUrl)
 
   const createdAt = new Date(result.user.createdAt)
-  ;('yyyy-MM-dd HH:mm:ss')
   const createdAtStr = format(
     new Date(result.user.createdAt),
     'yyyy-MM-dd HH:mm:ss'

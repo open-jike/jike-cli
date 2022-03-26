@@ -2,6 +2,7 @@ import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
 import { config } from './config'
 import { errorAndExit } from './log'
+import type { Entity } from 'jike-sdk'
 import type { ConfigUser } from './config'
 
 export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
@@ -33,4 +34,10 @@ export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
   return users
 }
 
-export const displayUser = (user: ConfigUser) => user.alias || user.screenName
+export const displayConfigUser = (user: ConfigUser) =>
+  user.alias || user.screenName
+
+export const displayUser = (user: Entity.SimpleUser, displayUsername = false) =>
+  `${logger.colors.yellow(`${user.screenName}`)}${
+    displayUsername ? ` (${logger.colors.gray(user.username)})` : ''
+  }`
