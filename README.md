@@ -2,6 +2,10 @@
 
 [![Unit Test](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml/badge.svg)](https://github.com/open-jike/jike-cli/actions/workflows/unit-test.yml)
 
+Ⓙ Jike CLI, a command line tool for Jike.
+
+Powered by [Jike SDK](https://github.com/open-jike/jike-cli), and made with Love ❤️.
+
 ## Installation
 
 ```bash
