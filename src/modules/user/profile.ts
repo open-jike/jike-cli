@@ -48,7 +48,7 @@ export const queryProfile = async ({
     return
   }
 
-  await displayImage(result.user.avatarImage.middlePicUrl)
+  ;(await displayImage(result.user.avatarImage.middlePicUrl)).render()
 
   const createdAt = new Date(result.user.createdAt)
   const createdAtStr = format(
