@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { JikeClient } from 'jike-sdk/node'
 import { filterUsers } from '../../utils/user'
 import { displayImage } from '../../utils/terminal'
+import { PROFILE_URL } from '../../constants'
 import type { ApiResponses } from 'jike-sdk/node'
 
 const { colors } = logger
@@ -111,19 +112,10 @@ export const queryProfile = async ({
 
     texts.push(
       [],
-      [
-        '   Web',
-        colors.underline(`https://web.okjike.com/u/${result.user.username}`),
-      ],
-      [
-        'Mobile',
-        colors.underline(`https://m.okjike.com/users/${result.user.username}`),
-      ],
+      ['   Web', colors.underline(PROFILE_URL.web + result.user.username)],
+      ['Mobile', colors.underline(PROFILE_URL.mobile + result.user.username)],
       process.platform === 'darwin'
-        ? [
-            ' macOS',
-            colors.underline(`jike://page.jk/user/${result.user.username}`),
-          ]
+        ? [' macOS', colors.underline(PROFILE_URL.mac + result.user.username)]
         : []
     )
 

@@ -2,31 +2,43 @@ import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { JikeClient } from 'jike-sdk/node'
 import open from 'open'
+import { PROFILE_URL } from '../../constants'
+import { errorAndExit } from '../../utils/log'
 import { filterUsers } from '../../utils/user'
 
 interface ViewOptions {
-  username: string
-  mobile: boolean
+  username?: string
+  platform?: keyof typeof PROFILE_URL
 }
 
 export const view = createCommand('view')
+  .aliases(['v', 'info', 'i'])
   .argument('[username]', 'the username of user')
   .description('open user profile in browser')
-  .option('-m, --mobile', 'view page for mobile phone')
-  .action((username?: string) => viewUser(username))
+  .option(
+    '-p, --platform <platform>',
+    'supports web, mobile and mac, default is web',
+    'web'
+  )
+  .action((username?: string) => {
+    const opts = view.opts<ViewOptions>()
+    viewUser({ ...opts, username })
+  })
 
-export const viewUser = async (username?: string) => {
-  const { mobile } = view.opts<Omit<ViewOptions, 'username'>>()
+export const viewUser = async ({ username, platform }: ViewOptions) => {
   if (!username) {
     const [user] = filterUsers()
     const client = JikeClient.fromJSON(user)
     username = await client.getSelf().getUsername()
   }
 
-  const url = mobile
-    ? `https://m.okjike.com/users/${username}`
-    : `https://web.okjike.com/u/${username}`
+  platform ||= 'web'
+  if (!(platform in PROFILE_URL)) {
+    errorAndExit(new Error(`invlid platform: ${platform}`))
+  }
 
+  const url = PROFILE_URL[platform] + username
   open(url)
+
   logger.info(`${url} opened!`)
 }
