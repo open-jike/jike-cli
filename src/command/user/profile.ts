@@ -4,7 +4,7 @@ import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
 import { JikeClient } from 'jike-sdk/node'
 import { filterUsers } from '../../utils/user'
-import { displayImage } from '../../utils/terminal'
+import { displayImage, printRaw as printIfRaw } from '../../utils/terminal'
 import { PROFILE_URL } from '../../constants'
 import type { ApiResponses } from 'jike-sdk/node'
 
@@ -12,8 +12,6 @@ const { colors } = logger
 
 export interface ProfileOptions {
   username?: string
-  raw?: boolean
-  pretty?: boolean
   table?: boolean
 }
 
@@ -21,8 +19,6 @@ export const profile = createCommand('profile')
   .alias('p')
   .argument('[username]', 'the username of user')
   .description('query user profile')
-  .option('-r, --raw', 'output raw data')
-  .option('-p, --pretty', 'pretty raw data')
   .option('-t, --table', 'display data in table')
   .action((username: string) => {
     const opts = profile.opts<Omit<ProfileOptions, 'username'>>()
@@ -31,8 +27,6 @@ export const profile = createCommand('profile')
 
 export const queryProfile = async ({
   username,
-  raw,
-  pretty,
   table: isTable,
 }: ProfileOptions) => {
   const [user] = filterUsers()
@@ -45,11 +39,7 @@ export const queryProfile = async ({
     result = await client.getSelf().queryProfile()
   }
 
-  if (raw) {
-    process.stdout.write(JSON.stringify(result, null, pretty ? 2 : 0))
-    return
-  }
-
+  printIfRaw(result)
   ;(await displayImage(result.user.avatarImage.middlePicUrl)).render()
 
   const createdAt = new Date(result.user.createdAt)

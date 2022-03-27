@@ -2,7 +2,7 @@ import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { JikeClient, limit } from 'jike-sdk/node'
 import { format } from 'date-fns'
-import { displayImage } from '../utils/terminal'
+import { displayImage, printRaw } from '../utils/terminal'
 import { displayUser, filterUsers } from '../utils/user'
 import type { Spinner } from '@poppinss/cliui/build/src/Logger/Spinner'
 import type { Entity } from 'jike-sdk/node'
@@ -11,16 +11,11 @@ interface NotificationOptions {
   avatar?: boolean
   image?: boolean
   count?: number
-  // TODO move to global options
-  raw?: number
-  pretty?: number
 }
 
 export const msg = createCommand('msg')
   .description('display notifications')
   .aliases(['message', 'notification'])
-  .option('-r, --raw', 'output raw data', false)
-  .option('-p, --pretty', 'format raw data', false)
   .option('--no-avatar', 'do not show avatar')
   .option('--no-image', 'do not show image')
   .option('-c, --count <count>', 'notification max count', '30')
@@ -51,12 +46,7 @@ const showNotifications = async (opts: NotificationOptions) => {
 
   logger.success('Loading notifications done!')
 
-  if (opts.raw) {
-    process.stdout.write(
-      `${JSON.stringify(notifications, null, opts.pretty ? 2 : 0)}\n`
-    )
-    return
-  }
+  printRaw(notifications)
 
   {
     const divider = logger.colors.gray('─'.repeat(process.stdout.columns || 30))
