@@ -1,11 +1,11 @@
-import process from 'process'
 import { createCommand } from 'commander'
 import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
 import { JikeClient } from 'jike-sdk/node'
 import { filterUsers } from '../../utils/user'
-import { displayImage, printRaw as printIfRaw } from '../../utils/terminal'
+import { displayImage, printIfRaw } from '../../utils/terminal'
 import { PROFILE_URL } from '../../constants'
+import { isMacOS } from '../../utils/os'
 import type { ApiResponses } from 'jike-sdk/node'
 
 const { colors } = logger
@@ -104,7 +104,7 @@ export const queryProfile = async ({
       [],
       ['   Web', colors.underline(PROFILE_URL.web + result.user.username)],
       ['Mobile', colors.underline(PROFILE_URL.mobile + result.user.username)],
-      process.platform === 'darwin'
+      isMacOS
         ? [' macOS', colors.underline(PROFILE_URL.mac + result.user.username)]
         : []
     )

@@ -35,7 +35,7 @@
     "@vue-reactivity/fs": "^0.1.1",
     "commander": "^9.1.0",
     "enquirer": "^2.3.6",
-    "jike-sdk": "^0.10.2",
+    "jike-sdk": "^0.11.1",
     "node-fetch": "^3.2.3",
     "open": "^8.4.0",
     "terminal-image": "^2.0.0"

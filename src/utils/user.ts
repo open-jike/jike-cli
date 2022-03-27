@@ -37,7 +37,15 @@ export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
 export const displayConfigUser = (user: ConfigUser) =>
   user.alias || user.screenName
 
-export const displayUser = (user: Entity.SimpleUser, displayUsername = false) =>
+export const displayUser = (user: Entity.User, displayUsername = false) =>
   `${logger.colors.yellow(`${user.screenName}`)}${
     displayUsername ? ` (${logger.colors.gray(user.username)})` : ''
   }`
+
+export const displayUsers = (users: Entity.User[], displayUsername = true) => {
+  return users.length > 1
+    ? users.map((user) => displayUser(user)).join(', ')
+    : users[0]
+    ? displayUser(users[0], displayUsername)
+    : '-'
+}

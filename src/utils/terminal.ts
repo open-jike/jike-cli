@@ -1,3 +1,4 @@
+import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
 import terminalImage from 'terminal-image'
 
@@ -17,7 +18,7 @@ export const displayImage = async (url: string, height = 8) => {
   }
 }
 
-export const printRaw = (data: any) => {
+export const printIfRaw = (data: any) => {
   interface Options {
     raw?: boolean
     pretty?: boolean
@@ -28,3 +29,6 @@ export const printRaw = (data: any) => {
   process.stdout.write(`${JSON.stringify(data, null, pretty ? 2 : 0)}\n`)
   process.exit(0)
 }
+
+export const renderDivider = () =>
+  logger.colors.gray('─'.repeat(process.stdout.columns || 30))

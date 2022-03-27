@@ -2,8 +2,8 @@ import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { JikeClient, limit } from 'jike-sdk/node'
 import { format } from 'date-fns'
-import { displayImage, printRaw } from '../utils/terminal'
-import { displayUser, filterUsers } from '../utils/user'
+import { displayImage, printIfRaw, renderDivider } from '../utils/terminal'
+import { displayUsers, filterUsers } from '../utils/user'
 import type { Spinner } from '@poppinss/cliui/build/src/Logger/Spinner'
 import type { Entity } from 'jike-sdk/node'
 
@@ -46,10 +46,10 @@ const showNotifications = async (opts: NotificationOptions) => {
 
   logger.success('Loading notifications done!')
 
-  printRaw(notifications)
+  printIfRaw(notifications)
 
   {
-    const divider = logger.colors.gray('─'.repeat(process.stdout.columns || 30))
+    const divider = renderDivider()
 
     let spinner: Spinner | undefined
     if (opts.image) spinner = logger.await('Downloading images')
@@ -74,12 +74,7 @@ async function renderNotification(
   { avatar, image }: NotificationOptions
 ): Promise<string[]> {
   const users = n.actionItem?.users ?? []
-  let usersText =
-    users.length > 1
-      ? `${users.map((user) => displayUser(user)).join(', ')} `
-      : users[0]
-      ? `${displayUser(users[0], true)} `
-      : '-'
+  let usersText = displayUsers(users)
   const bio = logger.colors.gray(users[0].bio ?? '')
 
   const usersCount = n.actionItem?.usersCount
@@ -182,7 +177,6 @@ async function renderNotification(
 }
 
 const warnUnknownType = (n: Entity.Notification) => {
-  console.log(n)
   const info = [n.type, n.actionType, n.actionItem.type].join('||')
   logger.warning(
     `Unknown notification: ${info}. Please send it to developer, thanks!`

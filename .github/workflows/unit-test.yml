@@ -41,6 +41,9 @@ jobs:
       - name: Install deps
         run: pnpm i --frozen-lockfile
 
+      - name: Lint
+        run: pnpm lint
+
       - name: Build
         run: pnpm build
 
