@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from 'fs/promises'
+import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 import { spawnSync } from 'child_process'
 import { createCommand } from 'commander'
@@ -38,10 +38,12 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
       draftDir,
       `${format(new Date(), 'yyyy-MM-dd-HH-mm-ss')}.txt`
     )
-    await writeFile(draftFile, '', 'utf-8')
     spawnSync('vim', [draftFile], { stdio: 'inherit' })
 
-    content = await readFile(draftFile, 'utf-8')
+    content = await readFile(draftFile, 'utf-8').catch((err) => {
+      logger.warning(err)
+      return ''
+    })
   }
 
   content = content?.trim()
