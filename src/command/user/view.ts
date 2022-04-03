@@ -1,10 +1,9 @@
 import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
-import { JikeClient } from 'jike-sdk/node'
 import open from 'open'
 import { PROFILE_URL } from '../../constants'
 import { errorAndExit } from '../../utils/log'
-import { filterUsers } from '../../utils/user'
+import { createClient, filterUsers } from '../../utils/user'
 
 interface ViewOptions {
   username?: string
@@ -28,7 +27,7 @@ export const view = createCommand('view')
 export const viewUser = async ({ username, platform }: ViewOptions) => {
   if (!username) {
     const [user] = filterUsers()
-    const client = JikeClient.fromJSON(user)
+    const client = createClient(user)
     username = await client.getSelf().getUsername()
   }
 

@@ -1,8 +1,9 @@
 import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
+import { JikeClient } from 'jike-sdk/node'
 import { config } from './config'
 import { errorAndExit } from './log'
-import type { Entity } from 'jike-sdk'
+import type { Entity, JikeClientJSON } from 'jike-sdk/node'
 import type { ConfigUser } from './config'
 
 export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
@@ -48,4 +49,16 @@ export const displayUsers = (users: Entity.User[], displayUsername = true) => {
     : users[0]
     ? displayUser(users[0], displayUsername)
     : '-'
+}
+
+export const createClient = (data: JikeClientJSON) => {
+  const client = JikeClient.fromJSON(data)
+  client.on('renewToken', async () => {
+    const data = await client.toJSON()
+    const { users } = config.value
+    const index = users.findIndex((user) => user.userId === data.userId)!
+    const user = users[index]
+    users[index] = { ...user, ...data }
+  })
+  return client
 }

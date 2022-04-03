@@ -1,9 +1,9 @@
 import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
-import { JikeClient, limit } from 'jike-sdk/node'
+import { limit } from 'jike-sdk/node'
 import { format } from 'date-fns'
 import { displayImage, printIfRaw, renderDivider } from '../utils/terminal'
-import { displayUsers, filterUsers } from '../utils/user'
+import { createClient, displayUsers, filterUsers } from '../utils/user'
 import type { Spinner } from '@poppinss/cliui/build/src/Logger/Spinner'
 import type { Entity } from 'jike-sdk/node'
 
@@ -26,7 +26,7 @@ export const msg = createCommand('msg')
 
 const showNotifications = async (opts: NotificationOptions) => {
   const [user] = filterUsers()
-  const client = JikeClient.fromJSON(user)
+  const client = createClient(user)
 
   const count = +(opts.count ?? 30)
   const spinner = logger.await('Loading notifications...')

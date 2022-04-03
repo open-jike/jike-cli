@@ -1,7 +1,12 @@
 import { createCommand } from 'commander'
-import { JikeClient, limit } from 'jike-sdk/node'
+import { limit } from 'jike-sdk/node'
 import { logger } from '@poppinss/cliui'
-import { displayUser, displayUsers, filterUsers } from '../../utils/user'
+import {
+  createClient,
+  displayUser,
+  displayUsers,
+  filterUsers,
+} from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
 import type { Entity } from 'jike-sdk/node'
@@ -21,7 +26,7 @@ export const feed = createCommand('feed')
 
 const viewFeeds = async (opts: FeedOptions) => {
   const [user] = filterUsers()
-  const client = JikeClient.fromJSON(user)
+  const client = createClient(user)
   const count = +(opts.count ?? 30)
 
   const updates = await client.queryFollowingUpdates({

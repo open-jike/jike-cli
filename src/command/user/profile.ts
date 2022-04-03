@@ -1,8 +1,7 @@
 import { createCommand } from 'commander'
 import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
-import { JikeClient } from 'jike-sdk/node'
-import { filterUsers } from '../../utils/user'
+import { createClient, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw } from '../../utils/terminal'
 import { PROFILE_URL } from '../../constants'
 import { isMacOS } from '../../utils/os'
@@ -30,7 +29,7 @@ export const queryProfile = async ({
   table: isTable,
 }: ProfileOptions) => {
   const [user] = filterUsers()
-  const client = JikeClient.fromJSON(user)
+  const client = createClient(user)
 
   let result: ApiResponses.Users.Profile
   if (username) {

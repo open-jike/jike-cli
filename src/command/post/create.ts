@@ -2,12 +2,12 @@ import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 import { spawnSync } from 'child_process'
 import { createCommand } from 'commander'
-import { ApiOptions, JikeClient } from 'jike-sdk/node'
+import { ApiOptions } from 'jike-sdk/node'
 import { format } from 'date-fns'
 import { logger, sticker } from '@poppinss/cliui'
 import enquirer from 'enquirer'
 import { configDir } from '../../utils/config'
-import { displayConfigUser, filterUsers } from '../../utils/user'
+import { createClient, displayConfigUser, filterUsers } from '../../utils/user'
 import { errorAndExit } from '../../utils/log'
 
 interface CreateOptions {
@@ -69,7 +69,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
   }
 
   for (const user of users) {
-    const client = JikeClient.fromJSON(user)
+    const client = createClient(user)
     await client
       .createPost(ApiOptions.PostType.ORIGINAL, content, {
         topicId: topic,
