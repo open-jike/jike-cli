@@ -1,4 +1,5 @@
 import { createCommand } from 'commander'
+import { info } from './info'
 import { list } from './list'
 import { login } from './login'
 import { logout } from './logout'
@@ -17,6 +18,7 @@ Example call:
   $ jike-cli user profile 82D23B32-CF36-4C59-AD6F-D05E3552CBF3
   $ jike-cli user renew
   $ jike-cli user view 82D23B32-CF36-4C59-AD6F-D05E3552CBF3
+  $ jike-cli user info
 `
   )
   .usage('<command> [flags]')
@@ -24,5 +26,6 @@ Example call:
   .addCommand(login)
   .addCommand(logout)
   .addCommand(list)
+  .addCommand(info)
   .addCommand(profile)
   .addCommand(view)
