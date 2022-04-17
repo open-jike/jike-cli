@@ -18,7 +18,7 @@ interface FeedOptions {
 export const feed = createCommand('feed')
   .description('feeds you are following')
   // TODO interactive next page, lastKey
-  .option('-c, --count <count>', 'notification max count', '30')
+  .option('-c, --count <count>', 'post max count', '30')
   .action(() => {
     const opts = feed.opts<FeedOptions>()
     viewFeeds(opts)
@@ -82,20 +82,4 @@ async function renderPost(p: Entity.FollowingUpdate) {
   }
 
   return texts.filter((text) => !!text.trim()).join('\n')
-  // console.log()
-  // if (p.type === 'PERSONAL_UPDATE') console.log(JSON.stringify(p, undefined, 2))
-  // types.add(p.type)
-
-  // console.log(p)
-  // const actions = new Set()
-
-  // actions.add(p.action)
-
-  // if (p.type === 'PERSONAL_UPDATE') console.log(p)
-  // if (!p.user) console.log(p)
-  // const userText = displayUser(p.user)
-  // console.log(p.type === 'ORIGINAL_POST' ? '动态' : '转发')
-  // console.log(p)
-
-  // console.log(`${userText}`)
 }
