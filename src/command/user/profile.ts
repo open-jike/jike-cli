@@ -5,7 +5,7 @@ import { createClient, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw } from '../../utils/terminal'
 import { PROFILE_URL } from '../../constants'
 import { isMacOS } from '../../utils/os'
-import type { ApiResponses } from 'jike-sdk/node'
+import type { ApiResponses } from 'jike-sdk'
 
 const { colors } = logger
 

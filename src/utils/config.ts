@@ -2,7 +2,7 @@ import os from 'os'
 import path from 'path'
 import { mkdir } from 'fs/promises'
 import { useJSON } from '@vue-reactivity/fs'
-import type { JikeClientJSON } from 'jike-sdk/node'
+import type { JikeClientJSON } from 'jike-sdk'
 
 export interface ConfigUser extends JikeClientJSON {
   alias: string

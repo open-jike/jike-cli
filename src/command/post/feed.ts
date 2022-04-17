@@ -1,5 +1,5 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk/node'
+import { limit } from 'jike-sdk'
 import { logger } from '@poppinss/cliui'
 import {
   createClient,
@@ -9,7 +9,7 @@ import {
 } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
-import type { Entity } from 'jike-sdk/node'
+import type { Entity } from 'jike-sdk'
 
 interface FeedOptions {
   count?: number

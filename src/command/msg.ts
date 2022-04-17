@@ -1,11 +1,11 @@
 import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk/node'
+import { limit } from 'jike-sdk'
 import { format } from 'date-fns'
 import { displayImage, printIfRaw, renderDivider } from '../utils/terminal'
 import { createClient, displayUsers, filterUsers } from '../utils/user'
 import type { Spinner } from '@poppinss/cliui/build/src/Logger/Spinner'
-import type { Entity } from 'jike-sdk/node'
+import type { Entity } from 'jike-sdk'
 
 interface NotificationOptions {
   avatar?: boolean
