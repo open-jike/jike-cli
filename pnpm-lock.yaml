@@ -15,7 +15,7 @@ specifiers:
   esmo: ^0.14.1
   eventemitter3: ^4.0.7
   fast-glob: ^3.2.11
-  jike-sdk: ^0.15.1
+  jike-sdk: ^0.16.0
   node-fetch: ^3.2.3
   open: ^8.4.0
   prettier: ^2.6.2
@@ -29,7 +29,7 @@ dependencies:
   commander: 9.2.0
   enquirer: 2.3.6
   eventemitter3: 4.0.7
-  jike-sdk: 0.15.1
+  jike-sdk: 0.16.0
   node-fetch: 3.2.3
   open: 8.4.0
   terminal-image: 2.0.0
@@ -2706,8 +2706,8 @@ packages:
       plist: 3.0.5
     dev: false
 
-  /jike-sdk/0.15.1:
-    resolution: {integrity: sha512-Zmqoj8bVE4TlDTJ2um5+gsW0k/CaU7F+2oufIJ3nWkfNNgRA1sd86d1kxxoMwylDnajdIi4jS4x42g5+jlkOdw==}
+  /jike-sdk/0.16.0:
+    resolution: {integrity: sha512-mHFCWI3Vfen2oQqHd3yjLt/hiIrDheiB9Iv4Opd9hg4G6LGnrgnIBNwoUXTWXoHQweMQtR1TZAN4FtdPq9J/nQ==}
     engines: {node: '>=14.17.0'}
     dev: false
 
