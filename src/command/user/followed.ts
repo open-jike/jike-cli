@@ -27,5 +27,5 @@ export const isFollowed = async (following?: string, follower?: string) => {
     'following'
   )
 
-  logger.info(`${isFollowed ? 'Followed!' : 'Not followed.'}`)
+  logger.info(isFollowed ? 'Followed!' : 'Not followed.')
 }
