@@ -46,7 +46,25 @@ const viewFeeds = async (opts: FeedOptions) => {
 async function renderPost(p: Entity.FollowingUpdate) {
   const texts: string[] = []
   if (p.type === 'PERSONAL_UPDATE') {
-    texts.push(`${displayUsers(p.users)} 关注了 ${displayUsers(p.targetUsers)}`)
+    switch (p.action) {
+      case 'LIVE_SHARE':
+        texts.push(
+          // @ts-expect-error
+          `${displayUsers(p.users)} ${p.verb}`,
+          // @ts-expect-error
+          (await displayImage(p.live.picture.picUrl)).result,
+          // @ts-expect-error
+          p.live.title
+        )
+        break
+      case 'USER_FOLLOW':
+        texts.push(
+          `${displayUsers(p.users)} 关注了 ${displayUsers(p.targetUsers)}`
+        )
+        break
+      default:
+        texts.push(`unsupported action: ${p.action}`)
+    }
   } else if (p.type === 'ORIGINAL_POST') {
     const link = isMacOS
       ? logger.colors.gray(
@@ -63,7 +81,7 @@ async function renderPost(p: Entity.FollowingUpdate) {
     if (p.pictures && p.pictures.length > 0) {
       const images = await Promise.all(
         p.pictures.map((p) =>
-          displayImage(p.middlePicUrl).then(({ result }) => result)
+          displayImage(p.middlePicUrl).then(({ result }) => `${result}\n`)
         )
       )
       texts.push(...images)
