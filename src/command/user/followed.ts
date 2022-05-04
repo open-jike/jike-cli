@@ -21,10 +21,21 @@ export const isFollowed = async (following?: string, follower?: string) => {
   const getUser = (username?: string) =>
     username ? client.getUser(username) : client.getSelf()
 
-  // TODO: auto select mode
+  const followingUser = getUser(following)
+  const followerUser = getUser(follower)
+
+  const followingProfile = await followingUser.queryProfile()
+  const followerProfile = await followerUser.queryProfile()
+
+  const mode =
+    followingProfile.user.statsCount.followingCount >
+    followerProfile.user.statsCount.followedCount
+      ? 'follower'
+      : 'following'
+
   const isFollowed = await getUser(following).isFollowing(
     getUser(follower),
-    'following'
+    mode
   )
 
   logger.info(isFollowed ? 'Followed!' : 'Not followed.')
