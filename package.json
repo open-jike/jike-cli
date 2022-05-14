@@ -3,21 +3,21 @@
   "version": "0.8.0",
   "description": "Jike CLI",
   "type": "module",
+  "license": "AGPL-3.0",
   "homepage": "https://github.com/open-jike/jike-cli#readme",
   "bugs": {
     "url": "https://github.com/open-jike/jike-cli#issues"
   },
-  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-jike/jike-cli.git"
+  },
   "files": [
     "dist",
     "bin"
   ],
   "main": "./dist/index.js",
   "bin": "./bin/jike-cli.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/open-jike/jike-cli.git"
-  },
   "publishConfig": {
     "access": "public"
   },
