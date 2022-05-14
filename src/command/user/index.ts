@@ -8,6 +8,7 @@ import { renew } from './renew'
 import { view } from './view'
 import { alias } from './alias'
 import { followed } from './followed'
+import { following } from './following'
 
 export const user = createCommand('user')
   .description('user-related operations')
@@ -23,6 +24,7 @@ Example call:
   $ jike-cli user info
   $ jike-cli user alias -u <user> <alias>
   $ jike-cli user followed -f 5C505995-681E-4C1E-AD4A-1CC683627B6E
+  $ jike-cli user following
 `
   )
   .usage('<command> [flags]')
@@ -35,3 +37,4 @@ Example call:
   .addCommand(view)
   .addCommand(alias)
   .addCommand(followed)
+  .addCommand(following)
