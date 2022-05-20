@@ -1,6 +1,6 @@
 {
   "name": "jike-cli",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Jike CLI",
   "type": "module",
   "license": "AGPL-3.0",
