@@ -54,7 +54,6 @@ async function renderPost(p: JikePostWithDetail) {
     texts.push(
       (await displayImage(detail.user.avatarImage.thumbnailUrl, 3)).result,
       `${displayUser(detail.user)}${
-        // @ts-ignore
         detail.topic ? ` [${detail.topic.content}]` : ''
       }: ${link}`,
       detail.content
@@ -67,14 +66,10 @@ async function renderPost(p: JikePostWithDetail) {
       )
       texts.push(...images)
     }
-    // @ts-expect-error
     if (detail.linkInfo) {
       texts.push(
-        // @ts-expect-error
         (await displayImage(detail.linkInfo.pictureUrl)).result,
-        // @ts-expect-error
         `分享链接 [${detail.linkInfo.title}](${logger.colors.blue(
-          // @ts-expect-error
           logger.colors.underline(detail.linkInfo.linkUrl)
         )})`
       )
