@@ -12,7 +12,6 @@ specifiers:
   enquirer: ^2.3.6
   eslint: ^8.15.0
   eslint-define-config: ^1.4.1
-  esmo: ^0.15.0
   eventemitter3: ^4.0.7
   fast-glob: ^3.2.11
   jike-sdk: ^0.19.0
@@ -21,6 +20,7 @@ specifiers:
   prettier: ^2.6.2
   terminal-image: ^2.0.0
   tsup: ^5.12.8
+  tsx: ^3.4.0
   typescript: ^4.6.4
 
 dependencies:
@@ -42,10 +42,10 @@ devDependencies:
   date-fns: 2.28.0
   eslint: 8.15.0
   eslint-define-config: 1.4.1
-  esmo: 0.15.0
   fast-glob: 3.2.11
   prettier: 2.6.2
   tsup: 5.12.8_typescript@4.6.4
+  tsx: 3.4.0
   typescript: 4.6.4
 
 packages:
@@ -85,8 +85,8 @@ packages:
     dev: false
     optional: true
 
-  /@esbuild-kit/cjs-loader/1.0.2:
-    resolution: {integrity: sha512-f6ZIRsc7BmeJ3Jd6g4MQ0e44ATlZsT7y1L5Py522b9HByc0ISIYD/KV9sZ0vJI8+pvXxLm/ve2gIff6FkUfzPQ==}
+  /@esbuild-kit/cjs-loader/2.0.0:
+    resolution: {integrity: sha512-1ijCpmiCQcOcr0dmwwwCpzv0inWpNtEgiXDWc74AL52AhvY108M26suhWe9PMDcF1esnPJf0YSeVBLLZS6SQvg==}
     dependencies:
       '@esbuild-kit/core-utils': 1.1.2
       get-tsconfig: 3.0.1
@@ -98,8 +98,8 @@ packages:
       esbuild: 0.14.38
     dev: true
 
-  /@esbuild-kit/esm-loader/1.1.2:
-    resolution: {integrity: sha512-ZxkU2ICaAKt9eZTdXNBOMZjq/QNd9m4y9XlYapua/wakTjlX+kt3IVBRXj/hubuZUPYsnb+hHkHMetyxXlHajg==}
+  /@esbuild-kit/esm-loader/2.1.0:
+    resolution: {integrity: sha512-zE7BepoWvVhyoHDEnc2whD9x27UzdRIcUguOD6mUx8PzYjEw2pdNsY+2sP9PeGxW6YJvtLOqcDj3tqhxj61IPw==}
     dependencies:
       '@esbuild-kit/core-utils': 1.1.2
       es-module-lexer: 0.10.5
@@ -2408,13 +2408,6 @@ packages:
       - supports-color
     dev: true
 
-  /esmo/0.15.0:
-    resolution: {integrity: sha512-cpqJOr3ajbykPE/u3ClD/3g3WP1OM4UwHgZktPzP4EJPXrnyu31NMaYAGvjSDB6pIckTsRWKPvMK2kTkiTd8XA==}
-    hasBin: true
-    dependencies:
-      tsx: 2.1.0
-    dev: true
-
   /espree/9.3.2:
     resolution: {integrity: sha512-D211tC7ZwouTIuY5x9XnS0E9sWNChB7IYKX/Xp5eQj3nFXhqmiUDB9q27y76oFl8jTg3pXcQx/bpxMfs3CIZbA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3982,12 +3975,13 @@ packages:
       typescript: 4.6.4
     dev: true
 
-  /tsx/2.1.0:
-    resolution: {integrity: sha512-+b4qULxZUFzGGJ4N40wDv0krYW5JWjNB5TkfC3bS4DIA4pa4IE82F/XAInnj0+sWL1XvKzDyFbXvpe8UHSkBfQ==}
+  /tsx/3.4.0:
+    resolution: {integrity: sha512-WWakMoC5OqUXvOVZuyAySyETjAZ9rJxZXRbbOhYXDCeHF95hQUBa07UwUFu1yprlnrJ/W7XWfA99YTNKO//KxQ==}
     hasBin: true
     dependencies:
-      '@esbuild-kit/cjs-loader': 1.0.2
-      '@esbuild-kit/esm-loader': 1.1.2
+      '@esbuild-kit/cjs-loader': 2.0.0
+      '@esbuild-kit/core-utils': 1.1.2
+      '@esbuild-kit/esm-loader': 2.1.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
