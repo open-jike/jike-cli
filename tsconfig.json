@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "module": "esnext",
-    "lib": ["es2019"],
+    "target": "ES2019",
+    "module": "Node16",
+    "lib": ["ES2019"],
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
