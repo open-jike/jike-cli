@@ -1,5 +1,4 @@
-> **Note**
-This repository has been archived. If you want to be a maintainer, please contact me.
+> **Note** This repository is not maintained now. If you want to be a maintainer, please contact me.
 
 # jike-cli [![npm](https://img.shields.io/npm/v/jike-cli.svg)](https://npmjs.com/package/jike-cli)
 
