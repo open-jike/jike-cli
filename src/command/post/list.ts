@@ -1,5 +1,5 @@
 import { createCommand } from 'commander'
-import { ApiOptions, limit } from 'jike-sdk'
+import { limit } from 'jike-sdk'
 import { logger } from '@poppinss/cliui'
 import { createClient, displayUser, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
@@ -13,7 +13,7 @@ interface ListOptions {
 
 export const list = createCommand('list')
   .alias('ls')
-  .description('feeds you are following')
+  .description('view posts of user')
   .argument('[username]', 'the username of user')
   // TODO interactive next page, lastKey
   .option('-c, --count <count>', 'post max count', '30')
@@ -45,7 +45,7 @@ const listPosts = async (opts: ListOptions) => {
 async function renderPost(p: JikePostWithDetail) {
   const detail = p.getDetail()
   const texts: string[] = []
-  if (p.type === ApiOptions.PostType.ORIGINAL) {
+  if (detail.type === 'ORIGINAL_POST') {
     const link = isMacOS
       ? logger.colors.gray(
           logger.colors.underline(`jike://page.jk/originalPost/${p.id}`)

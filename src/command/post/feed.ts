@@ -68,7 +68,7 @@ async function renderPost(
         texts.push(`unsupported action: ${p.action}`)
     }
   } else if (p.type === ApiOptions.PostType.ORIGINAL) {
-    const detail = p.detail
+    const detail = p.detail as Entity.OriginalPost
     const link = isMacOS
       ? logger.colors.gray(
           logger.colors.underline(`jike://page.jk/originalPost/${p.id}`)
@@ -83,7 +83,7 @@ async function renderPost(
     )
     if (detail.pictures && detail.pictures.length > 0) {
       const images = await Promise.all(
-        (detail.pictures as Entity.Picture[]).map((p) =>
+        detail.pictures.map((p) =>
           displayImage(p.middlePicUrl).then(({ result }) => `${result}\n`)
         )
       )
