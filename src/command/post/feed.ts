@@ -1,5 +1,5 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk'
+import { ApiOptions, limit } from 'jike-sdk'
 import { logger } from '@poppinss/cliui'
 import {
   createClient,
@@ -9,7 +9,7 @@ import {
 } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
-import type { Entity } from 'jike-sdk'
+import type { Entity, JikePostWithDetail } from 'jike-sdk'
 
 interface FeedOptions {
   count?: number
@@ -43,7 +43,9 @@ const viewFeeds = async (opts: FeedOptions) => {
   process.stdout.write(`${texts.join('\n')}\n`)
 }
 
-async function renderPost(p: Entity.FollowingUpdate) {
+async function renderPost(
+  p: JikePostWithDetail | ({ actionTime: string } & Entity.PersonalUpdate)
+) {
   const texts: string[] = []
   if (p.type === 'PERSONAL_UPDATE') {
     switch (p.action) {
@@ -65,37 +67,37 @@ async function renderPost(p: Entity.FollowingUpdate) {
       default:
         texts.push(`unsupported action: ${p.action}`)
     }
-  } else if (p.type === 'ORIGINAL_POST') {
+  } else if (p.type === ApiOptions.PostType.ORIGINAL) {
+    const detail = p.detail
     const link = isMacOS
       ? logger.colors.gray(
           logger.colors.underline(`jike://page.jk/originalPost/${p.id}`)
         )
       : ''
     texts.push(
-      (await displayImage(p.user.avatarImage.thumbnailUrl, 3)).result,
-      `${displayUser(p.user)}${
-        p.topic ? ` [${p.topic.content}]` : ''
+      (await displayImage(detail.user.avatarImage.thumbnailUrl, 3)).result,
+      `${displayUser(detail.user)}${
+        detail.topic ? ` [${detail.topic.content}]` : ''
       }: ${link}`,
-      p.content
+      detail.content
     )
-    if (p.pictures && p.pictures.length > 0) {
+    if (detail.pictures && detail.pictures.length > 0) {
       const images = await Promise.all(
-        p.pictures.map((p) =>
+        (detail.pictures as Entity.Picture[]).map((p) =>
           displayImage(p.middlePicUrl).then(({ result }) => `${result}\n`)
         )
       )
       texts.push(...images)
     }
-    if (p.linkInfo) {
+    if (detail.linkInfo) {
       texts.push(
-        (await displayImage(p.linkInfo.pictureUrl)).result,
-        `分享链接 [${p.linkInfo.title}](${logger.colors.blue(
-          logger.colors.underline(p.linkInfo.linkUrl)
+        (await displayImage(detail.linkInfo.pictureUrl)).result,
+        `分享链接 [${detail.linkInfo.title}](${logger.colors.blue(
+          logger.colors.underline(detail.linkInfo.linkUrl)
         )})`
       )
     }
   } else {
-    // @ts-expect-error
     texts.push(`UNSUPPORTED: ${p.type}`)
   }
 
