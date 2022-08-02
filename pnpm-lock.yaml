@@ -14,7 +14,7 @@ specifiers:
   eslint-define-config: ^1.6.0
   eventemitter3: ^4.0.7
   fast-glob: ^3.2.11
-  jike-sdk: ^0.19.6
+  jike-sdk: ^0.19.7
   node-fetch: ^3.2.10
   open: ^8.4.0
   prettier: ^2.7.1
@@ -29,7 +29,7 @@ dependencies:
   commander: 9.4.0
   enquirer: 2.3.6
   eventemitter3: 4.0.7
-  jike-sdk: 0.19.6
+  jike-sdk: 0.19.7
   node-fetch: 3.2.10
   open: 8.4.0
   terminal-image: 2.0.0
@@ -2752,12 +2752,12 @@ packages:
       plist: 3.0.6
     dev: false
 
-  /jike-sdk/0.19.6:
-    resolution: {integrity: sha512-IVzS+JsrxnHxN2adtvnzUv2pWxw5HfpVl5tK/0z6szxnwhSQOaA0kLPUe3aNysNdFjL9Et5tGp79C9KcS4vMaQ==}
+  /jike-sdk/0.19.7:
+    resolution: {integrity: sha512-lXCu0qoIEyODrDI1zjfFT3cfaBN0yuyROR/RVXfk0D+40GhZu9EZS+NbEyPKW5nI88OFZpbSpBkLhlTXNf1wsA==}
     engines: {node: '>=14.19.0'}
     dependencies:
       eventemitter3: 4.0.7
-      ky: 0.30.0
+      ky: 0.31.1
       node-fetch: 3.2.10
     dev: false
 
@@ -2843,9 +2843,9 @@ packages:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
 
-  /ky/0.30.0:
-    resolution: {integrity: sha512-X/u76z4JtDVq10u1JA5UQfatPxgPaVDMYTrgHyiTpGN2z4TMEJkIHsoSBBSg9SWZEIXTKsi9kHgiQ9o3Y/4yog==}
-    engines: {node: '>=12'}
+  /ky/0.31.1:
+    resolution: {integrity: sha512-wha6TXwen/+4aeHGn8oyHWTQdukT/JZew4mmu2KiCFKn1NHCXiWpeBhGDVFiIX9FN7wsfSkV0C8yZ6YRKE/w4Q==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /levn/0.4.1:

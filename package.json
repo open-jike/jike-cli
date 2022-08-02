@@ -36,7 +36,7 @@
     "commander": "^9.4.0",
     "enquirer": "^2.3.6",
     "eventemitter3": "^4.0.7",
-    "jike-sdk": "^0.19.6",
+    "jike-sdk": "^0.19.7",
     "node-fetch": "^3.2.10",
     "open": "^8.4.0",
     "terminal-image": "^2.0.0"
