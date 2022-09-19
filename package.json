@@ -42,12 +42,12 @@
     "terminal-image": "^2.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^2.4.3",
-    "@sxzz/eslint-config-ts": "^2.4.3",
+    "@sxzz/eslint-config-prettier": "^2.4.4",
+    "@sxzz/eslint-config-ts": "^2.4.4",
     "@types/node": "*",
     "bumpp": "^8.2.1",
-    "date-fns": "^2.29.2",
-    "eslint": "^8.23.0",
+    "date-fns": "^2.29.3",
+    "eslint": "^8.23.1",
     "eslint-define-config": "^1.7.0",
     "fast-glob": "^3.2.12",
     "prettier": "^2.7.1",
