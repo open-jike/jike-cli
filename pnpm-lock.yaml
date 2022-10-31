@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@poppinss/cliui': ^3.0.4
+  '@poppinss/cliui': ^3.0.5
   '@sxzz/eslint-config-prettier': ^2.4.4
   '@sxzz/eslint-config-ts': ^2.4.4
   '@types/node': '*'
@@ -11,7 +11,7 @@ specifiers:
   date-fns: ^2.29.3
   enquirer: ^2.3.6
   eslint: ^8.26.0
-  eslint-define-config: ^1.8.0
+  eslint-define-config: ^1.11.0
   eventemitter3: ^4.0.7
   fast-glob: ^3.2.12
   jike-sdk: ^0.20.2
@@ -24,7 +24,7 @@ specifiers:
   typescript: ^4.8.4
 
 dependencies:
-  '@poppinss/cliui': 3.0.4
+  '@poppinss/cliui': 3.0.5
   '@vue-reactivity/fs': 0.1.1
   commander: 9.4.1
   enquirer: 2.3.6
@@ -41,7 +41,7 @@ devDependencies:
   bumpp: 8.2.1
   date-fns: 2.29.3
   eslint: 8.26.0
-  eslint-define-config: 1.8.0
+  eslint-define-config: 1.11.0
   fast-glob: 3.2.12
   prettier: 2.7.1
   tsup: 6.3.0_typescript@4.8.4
@@ -942,8 +942,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@poppinss/cliui/3.0.4:
-    resolution: {integrity: sha512-oiXGNRGnC4oPAthMqUKtatsr1934z9iRI4uw4AQCjHtRs0EeuqrfGYdcYMSGZsz/xknKomyydYKLy3UlS2kx5A==}
+  /@poppinss/cliui/3.0.5:
+    resolution: {integrity: sha512-9TCwhJ6hQDAv7LWredEQL7eSA97kQ/i5Td80T7InV9z9rOXT8keywAM0pSvTUS01bwCeiZQVoT4r/G67DRiPJA==}
     dependencies:
       '@poppinss/colors': 3.0.3
       cli-boxes: 3.0.0
@@ -967,7 +967,7 @@ packages:
       eslint: '>=7.4.0'
     dependencies:
       eslint: 8.26.0
-      eslint-define-config: 1.8.0
+      eslint-define-config: 1.11.0
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.26.0
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.26.0_4fhefaapn2a2ripkua6kkzl2oa
@@ -989,7 +989,7 @@ packages:
     dependencies:
       eslint: 8.26.0
       eslint-config-prettier: 8.5.0_eslint@8.26.0
-      eslint-define-config: 1.8.0
+      eslint-define-config: 1.11.0
       eslint-plugin-prettier: 4.2.1_aniwkeyvlpmwkidetuytnokvcm
       eslint-plugin-yml: 1.1.0_eslint@8.26.0
       prettier: 2.7.1
@@ -1007,7 +1007,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.36.1_4mybfb5ctbhzne3ooyqihwfhte
       '@typescript-eslint/parser': 5.36.1_wyqvi574yv7oiwfeinomdzmc3m
       eslint: 8.26.0
-      eslint-define-config: 1.8.0
+      eslint-define-config: 1.11.0
       typescript: 4.8.4
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
@@ -1961,9 +1961,9 @@ packages:
       eslint: 8.26.0
     dev: true
 
-  /eslint-define-config/1.8.0:
-    resolution: {integrity: sha512-YibjbNkHKMo3QAnV3bgc+BdvmYCcCpuoRdAIc+6W/P91G02ZOrCVaPrco9Uf4md25NanjkV2bnfwce8XfPRS7A==}
-    engines: {node: '>= 14.6.0', npm: '>= 6.0.0', pnpm: '>= 7.0.0'}
+  /eslint-define-config/1.11.0:
+    resolution: {integrity: sha512-J5xNmL5EyXJzrRCGuyr8eKia2boFnJl3Lzurrv1tpM3oxtNONlp9/HW+zRFZ6+W3U7BQDCtnLunGmyCCtFHioQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13', pnpm: '>= 7.0.0'}
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
