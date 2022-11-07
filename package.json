@@ -47,11 +47,11 @@
     "@types/node": "*",
     "bumpp": "^8.2.1",
     "date-fns": "^2.29.3",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "eslint-define-config": "^1.11.0",
     "fast-glob": "^3.2.12",
     "prettier": "^2.7.1",
-    "tsup": "^6.3.0",
+    "tsup": "^6.4.0",
     "tsx": "^3.11.0",
     "typescript": "^4.8.4"
   },
