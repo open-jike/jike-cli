@@ -12,7 +12,7 @@ specifiers:
   enquirer: ^2.3.6
   eslint: ^8.28.0
   eslint-define-config: ^1.12.0
-  eventemitter3: ^4.0.7
+  eventemitter3: ^5.0.0
   fast-glob: ^3.2.12
   jike-sdk: ^0.21.0
   node-fetch: ^3.3.0
@@ -28,7 +28,7 @@ dependencies:
   '@vue-reactivity/fs': 0.1.1
   commander: 9.4.1
   enquirer: 2.3.6
-  eventemitter3: 4.0.7
+  eventemitter3: 5.0.0
   jike-sdk: 0.21.0
   node-fetch: 3.3.0
   open: 8.4.0
@@ -2255,6 +2255,10 @@ packages:
 
   /eventemitter3/4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+    dev: false
+
+  /eventemitter3/5.0.0:
+    resolution: {integrity: sha512-riuVbElZZNXLeLEoprfNYoDSwTBRR44X3mnhdI1YcnENpWTCsTTVZ2zFuqQcpoyqPQIUXdiPEU0ECAq0KQRaHg==}
     dev: false
 
   /execa/5.1.1:
