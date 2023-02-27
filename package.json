@@ -45,7 +45,7 @@
     "@sxzz/eslint-config-prettier": "^2.4.5",
     "@sxzz/eslint-config-ts": "^2.4.5",
     "@types/node": "*",
-    "bumpp": "^8.2.1",
+    "bumpp": "^9.0.0",
     "date-fns": "^2.29.3",
     "eslint": "^8.34.0",
     "eslint-define-config": "^1.15.0",
