@@ -1,6 +1,7 @@
 {
   "name": "jike-cli",
   "version": "0.8.4",
+  "packageManager": "pnpm@8.1.0",
   "description": "Jike CLI",
   "type": "module",
   "license": "AGPL-3.0",
