@@ -43,18 +43,18 @@
     "terminal-image": "^2.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^2.4.5",
-    "@sxzz/eslint-config-ts": "^2.4.5",
+    "@sxzz/eslint-config-prettier": "^2.4.6",
+    "@sxzz/eslint-config-ts": "^2.4.6",
     "@types/node": "*",
-    "bumpp": "^9.0.0",
+    "bumpp": "^9.1.0",
     "date-fns": "^2.29.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
     "eslint-define-config": "^1.17.0",
     "fast-glob": "^3.2.12",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.7",
     "tsup": "^6.7.0",
-    "tsx": "^3.12.5",
-    "typescript": "^5.0.2"
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.3"
   },
   "engines": {
     "node": ">=14.19.0"
