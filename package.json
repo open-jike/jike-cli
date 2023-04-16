@@ -37,8 +37,7 @@
     "commander": "^10.0.0",
     "enquirer": "^2.3.6",
     "eventemitter3": "^5.0.0",
-    "jike-sdk": "^0.22.0",
-    "node-fetch": "^3.3.1",
+    "jike-sdk": "^0.23.0",
     "open": "^9.1.0",
     "terminal-image": "^2.0.0"
   },
@@ -57,6 +56,6 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=14.19.0"
+    "node": ">=16.14.0"
   }
 }

@@ -1,10 +1,10 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk'
+import { limit } from 'jike-sdk/polyfill'
 import { logger } from '@poppinss/cliui'
 import { createClient, displayUser, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
-import type { JikePostWithDetail } from 'jike-sdk'
+import type { JikePostWithDetail } from 'jike-sdk/polyfill'
 
 interface ListOptions {
   count?: number

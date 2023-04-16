@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import enquirer from 'enquirer'
 import { logger } from '@poppinss/cliui'
-import { JikeClient } from 'jike-sdk'
+import { JikeClient } from 'jike-sdk/polyfill'
 import { createCommand } from 'commander'
 import { errorAndExit } from '../../utils/log'
 import { config, isSameUser } from '../../utils/config'

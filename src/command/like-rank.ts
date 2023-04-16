@@ -1,9 +1,9 @@
 import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk'
+import { limit } from 'jike-sdk/polyfill'
 import { createClient, displayUser, filterUsers } from '../utils/user'
 import { displayImage, renderDivider } from '../utils/terminal'
-import type { Entity } from 'jike-sdk'
+import type { Entity } from 'jike-sdk/polyfill'
 
 interface LikeRankOptions {
   top: number
