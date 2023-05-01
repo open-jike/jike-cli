@@ -36,7 +36,7 @@
     "@vue-reactivity/fs": "^0.1.1",
     "commander": "^10.0.1",
     "enquirer": "^2.3.6",
-    "eventemitter3": "^5.0.0",
+    "eventemitter3": "^5.0.1",
     "jike-sdk": "^0.23.2",
     "open": "^9.1.0",
     "terminal-image": "^2.0.0"
@@ -46,13 +46,13 @@
     "@sxzz/eslint-config-ts": "^2.4.6",
     "@types/node": "*",
     "bumpp": "^9.1.0",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "eslint": "^8.39.0",
-    "eslint-define-config": "^1.19.0",
+    "eslint-define-config": "^1.20.0",
     "fast-glob": "^3.2.12",
     "prettier": "^2.8.8",
     "tsup": "^6.7.0",
-    "tsx": "^3.12.6",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   },
   "engines": {
