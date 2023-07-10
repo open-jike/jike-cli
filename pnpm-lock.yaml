@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.0.1
     version: 5.0.1
   jike-sdk:
-    specifier: ^0.23.2
-    version: 0.23.2
+    specifier: ^0.23.3
+    version: 0.23.3
   open:
     specifier: ^9.1.0
     version: 9.1.0
@@ -3288,13 +3288,13 @@ packages:
       plist: 3.0.6
     dev: false
 
-  /jike-sdk@0.23.2:
-    resolution: {integrity: sha512-5uf79ZOkrth1IOQuzPI5piASSS3oS1Sy4kkEzN25a31bKK0BOQjdjrlowLGjV/3QVh3bboVnYbTIxgqQtOlvXw==}
+  /jike-sdk@0.23.3:
+    resolution: {integrity: sha512-0kiqtvNuQMSH9XdDbhAroIN5vBNPaT7S4HzCSc70QhU4ANfoH2yoRouS3dTCRjUllYjOYf7Awa1NuO7uJL2iqQ==}
     engines: {node: '>=16.14.0'}
     dependencies:
       eventemitter3: 5.0.1
       ky: 0.33.3
-      undici: 5.21.2
+      undici: 5.22.1
     dev: false
 
   /jimp@0.14.0:
@@ -4532,9 +4532,9 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici@5.21.2:
-    resolution: {integrity: sha512-f6pTQ9RF4DQtwoWSaC42P/NKlUjvezVvd9r155ohqkwFNRyBKM3f3pcty3ouusefNRyM25XhIQEbeQ46sZDJfQ==}
-    engines: {node: '>=12.18'}
+  /undici@5.22.1:
+    resolution: {integrity: sha512-Ji2IJhFXZY0x/0tVBXeQwgPlLWw13GVzpsWPQ3rV50IFMMof2I55PZZxtm4P6iNq+L5znYN9nSTAq0ZyE6lSJw==}
+    engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
     dev: false
