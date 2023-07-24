@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^1.21.0
     version: 1.21.0
   fast-glob:
-    specifier: ^3.3.0
-    version: 3.3.0
+    specifier: ^3.3.1
+    version: 3.3.1
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -1670,7 +1670,7 @@ packages:
       '@jsdevtools/ez-spawn': 3.0.4
       c12: 1.4.1
       cac: 6.7.14
-      fast-glob: 3.3.0
+      fast-glob: 3.3.1
       prompts: 2.4.2
       semver: 7.5.1
     transitivePeerDependencies:
@@ -2687,8 +2687,8 @@ packages:
     resolution: {integrity: sha512-xJuoT5+L99XlZ8twedaRf6Ax2TgQVxvgZOYoPKqZufmJib0tL2tegPBOZb1pVNgIhlqDlA0eO0c3wBvQcmzx4w==}
     dev: true
 
-  /fast-glob@3.3.0:
-    resolution: {integrity: sha512-ChDuvbOypPuNjO8yIDf36x7BlZX1smcUMTTcyoIjycexOxd6DFsKsg21qVBzEmr3G7fUKIRy2/psii+CIUt7FA==}
+  /fast-glob@3.3.1:
+    resolution: {integrity: sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==}
     engines: {node: '>=8.6.0'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2913,7 +2913,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.0
+      fast-glob: 3.3.1
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
