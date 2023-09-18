@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.0.1
     version: 5.0.1
   jike-sdk:
-    specifier: ^0.23.3
-    version: 0.23.3
+    specifier: ^0.24.0
+    version: 0.24.0
   open:
     specifier: ^9.1.0
     version: 9.1.0
@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^7.2.0
     version: 7.2.0(typescript@5.2.2)
   tsx:
-    specifier: ^3.12.8
-    version: 3.12.8
+    specifier: ^3.12.10
+    version: 3.12.10
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
@@ -112,22 +112,22 @@ packages:
   /@esbuild-kit/cjs-loader@2.4.2:
     resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
     dependencies:
-      '@esbuild-kit/core-utils': 3.2.2
+      '@esbuild-kit/core-utils': 3.3.2
       get-tsconfig: 4.4.0
     dev: true
 
-  /@esbuild-kit/core-utils@3.2.2:
-    resolution: {integrity: sha512-Ub6LaRaAgF80dTSzUdXpFLM1pVDdmEVB9qb5iAzSpyDlX/mfJTFGOnZ516O05p5uWWteNviMKi4PAyEuRxI5gA==}
+  /@esbuild-kit/core-utils@3.3.2:
+    resolution: {integrity: sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==}
     dependencies:
       esbuild: 0.18.20
       source-map-support: 0.5.21
     dev: true
 
-  /@esbuild-kit/esm-loader@2.5.5:
-    resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
+  /@esbuild-kit/esm-loader@2.6.5:
+    resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
     dependencies:
-      '@esbuild-kit/core-utils': 3.2.2
-      get-tsconfig: 4.4.0
+      '@esbuild-kit/core-utils': 3.3.2
+      get-tsconfig: 4.7.0
     dev: true
 
   /@esbuild/android-arm64@0.18.20:
@@ -2829,6 +2829,12 @@ packages:
     resolution: {integrity: sha512-0Gdjo/9+FzsYhXCEFueo2aY1z1tpXrxWZzP7k8ul9qt1U5o8rYJwTJYmaeHdrVosYIVYkOy2iwCJ9FdpocJhPQ==}
     dev: true
 
+  /get-tsconfig@4.7.0:
+    resolution: {integrity: sha512-pmjiZ7xtB8URYm74PlGJozDNyhvsVLUcpBa8DZBG3bWHwaHa9bPiRpiSfovw+fjhwONSCWKRyk+JQHEGZmMrzw==}
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+    dev: true
+
   /gifwrap@0.9.4:
     resolution: {integrity: sha512-MDMwbhASQuVeD4JKd1fKgNgCRL3fGqMM4WaqpNhWO0JiMOAjbQdumbs4BbBZEy9/M00EHEjKN3HieVhCUlwjeQ==}
     dependencies:
@@ -3269,13 +3275,13 @@ packages:
       plist: 3.0.6
     dev: false
 
-  /jike-sdk@0.23.3:
-    resolution: {integrity: sha512-0kiqtvNuQMSH9XdDbhAroIN5vBNPaT7S4HzCSc70QhU4ANfoH2yoRouS3dTCRjUllYjOYf7Awa1NuO7uJL2iqQ==}
+  /jike-sdk@0.24.0:
+    resolution: {integrity: sha512-z8DF2e6kbs8oDmB7fVwR1FAfo2HUH/e0BnYPs7/KtW10d/XJaOx90mEO/o+k+jd1SvE1F7RbF3eWH/Q9BMIUPw==}
     engines: {node: '>=16.14.0'}
     dependencies:
       eventemitter3: 5.0.1
-      ky: 0.33.3
-      undici: 5.22.1
+      ky: 1.0.1
+      undici: 5.24.0
     dev: false
 
   /jimp@0.14.0:
@@ -3381,9 +3387,9 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /ky@0.33.3:
-    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
-    engines: {node: '>=14.16'}
+  /ky@1.0.1:
+    resolution: {integrity: sha512-UvcwpQO0LOuZwG0Ti3VDo6w57KYt+r4bWEYlNaMt82hgyFtse86QtOGum1RzsZni31FndXQl6NvtDArfunt2JQ==}
+    engines: {node: '>=18'}
     dev: false
 
   /levn@0.4.1:
@@ -4033,6 +4039,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /resolve-pkg-maps@1.0.0:
+    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+    dev: true
+
   /resolve@1.22.1:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
@@ -4446,13 +4456,13 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /tsx@3.12.8:
-    resolution: {integrity: sha512-Lt9KYaRGF023tlLInPj8rgHwsZU8qWLBj4iRXNWxTfjIkU7canGL806AqKear1j722plHuiYNcL2ZCo6uS9UJA==}
+  /tsx@3.12.10:
+    resolution: {integrity: sha512-2+46h4xvUt1aLDNvk5YBT8Uzw+b7BolGbn7iSMucYqCXZiDc+1IMghLVdw8kKjING32JFOeO+Am9posvjkeclA==}
     hasBin: true
     dependencies:
       '@esbuild-kit/cjs-loader': 2.4.2
-      '@esbuild-kit/core-utils': 3.2.2
-      '@esbuild-kit/esm-loader': 2.5.5
+      '@esbuild-kit/core-utils': 3.3.2
+      '@esbuild-kit/esm-loader': 2.6.5
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -4521,8 +4531,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici@5.22.1:
-    resolution: {integrity: sha512-Ji2IJhFXZY0x/0tVBXeQwgPlLWw13GVzpsWPQ3rV50IFMMof2I55PZZxtm4P6iNq+L5znYN9nSTAq0ZyE6lSJw==}
+  /undici@5.24.0:
+    resolution: {integrity: sha512-OKlckxBjFl0oXxcj9FU6oB8fDAaiRUq+D8jrFWGmOfI/gIyjk/IeS75LMzgYKUaeHzLUcYvf9bbJGSrUwTfwwQ==}
     engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
