@@ -1,9 +1,9 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk/polyfill'
+import { limit } from 'jike-sdk'
 import { ui } from '../ui'
 import { createClient, displayUser, filterUsers } from '../utils/user'
 import { displayImage, renderDivider } from '../utils/terminal'
-import type { Entity } from 'jike-sdk/polyfill'
+import type { Entity } from 'jike-sdk'
 
 interface LikeRankOptions {
   top: number
@@ -59,7 +59,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
       .map(async ({ user, count }) => {
         const ranking = getRanking(count)
         let text = `${renderRanking(ranking)} ${displayUser(
-          user,
+          user
         )} 点赞 ${ui.colors.cyan(`${count}`)} 次，${(
           (count / posts.length) *
           100
@@ -71,7 +71,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
           }\n${text}\n${divider}`
         }
         return text
-      }),
+      })
   )
 
   spinner.stop()

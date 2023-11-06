@@ -1,9 +1,9 @@
 import { program } from 'commander'
-import { JikeClient } from 'jike-sdk/polyfill'
+import { JikeClient } from 'jike-sdk'
 import { ui } from '../ui'
 import { config } from './config'
 import { errorAndExit } from './log'
-import type { Entity, JikeClientJSON } from 'jike-sdk/polyfill'
+import type { Entity, JikeClientJSON } from 'jike-sdk'
 import type { ConfigUser } from './config'
 
 export const filterUsers = (customQueries?: string[], allowEmpty = true) => {

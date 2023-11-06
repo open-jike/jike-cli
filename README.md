@@ -10,7 +10,7 @@ Powered by [Jike SDK](https://github.com/open-jike/jike-cli), and made with Love
 
 ## Installation
 
-Requires [Node.js](https://nodejs.org) 16.14.0 or above.
+Requires [Node.js](https://nodejs.org) 18.12.0 or above.
 
 ```bash
 $ npm i -g jike-cli

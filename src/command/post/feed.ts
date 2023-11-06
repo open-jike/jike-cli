@@ -1,5 +1,5 @@
 import { createCommand } from 'commander'
-import { ApiOptions, limit } from 'jike-sdk/polyfill'
+import { ApiOptions, limit } from 'jike-sdk'
 import { ui } from '../../ui'
 import {
   createClient,
@@ -9,7 +9,7 @@ import {
 } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
-import type { Entity, JikePostWithDetail } from 'jike-sdk/polyfill'
+import type { Entity, JikePostWithDetail } from 'jike-sdk'
 
 interface FeedOptions {
   count?: number

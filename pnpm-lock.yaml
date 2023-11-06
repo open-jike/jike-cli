@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.0.1
     version: 5.0.1
   jike-sdk:
-    specifier: ^0.25.1
-    version: 0.25.1
+    specifier: ^0.26.0
+    version: 0.26.0
   open:
     specifier: ^9.1.0
     version: 9.1.0
@@ -3188,9 +3188,9 @@ packages:
       plist: 3.1.0
     dev: false
 
-  /jike-sdk@0.25.1:
-    resolution: {integrity: sha512-L+4CmzhN4GzFiu8rds+uTP56s2bO42iNgIoE4r3f0A92VkcoeBbGYBJLh4MLfJQE11bnAVdYur3Qa+zFfu1WSQ==}
-    engines: {node: '>=16.14.0'}
+  /jike-sdk@0.26.0:
+    resolution: {integrity: sha512-FFvtKTFlEMxn2yfoH5w/Hz/22OE/NHPV6aRCe6dXx+612jgi6B/iS8qbsTqQMkZI4uMYF3aE7fhCQZjGktEhTQ==}
+    engines: {node: '>=18.12.0'}
     dependencies:
       eventemitter3: 5.0.1
       ky: 1.1.3

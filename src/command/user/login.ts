@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto'
 import enquirer from 'enquirer'
-import { JikeClient } from 'jike-sdk/polyfill'
+import { JikeClient } from 'jike-sdk'
 import { createCommand } from 'commander'
 import { ui } from '../../ui'
 import { errorAndExit } from '../../utils/log'
