@@ -1,6 +1,6 @@
-import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
 import terminalImage from 'terminal-image'
+import { ui } from '../ui'
 
 export const displayImage = async (url: string, height = 8) => {
   const response = await fetch(url)
@@ -31,4 +31,4 @@ export const printIfRaw = (data: any) => {
 }
 
 export const renderDivider = () =>
-  logger.colors.gray('─'.repeat(process.stdout.columns || 30))
+  ui.colors.gray('─'.repeat(process.stdout.columns || 30))

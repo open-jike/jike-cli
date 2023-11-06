@@ -1,5 +1,5 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { createClient, displayConfigUser, filterUsers } from '../../utils/user'
 
 export const renew = createCommand('renew')
@@ -12,15 +12,15 @@ export const renewUsers = async () => {
 
   for (const user of users) {
     const userName = displayConfigUser(user)
-    const spinner = logger.await(`Renew user: ${userName}`)
+    const spinner = ui.logger.await(`Renew user: ${userName}`)
     const client = createClient(user)
     try {
       await client.renewToken().finally(() => spinner.stop())
     } catch (err: any) {
-      logger.error(`Renew user ${userName} failed!`)
-      logger.error(err)
+      ui.logger.error(`Renew user ${userName} failed!`)
+      ui.logger.error(err)
       continue
     }
-    logger.success(`Renew user: ${userName}!`)
+    ui.logger.success(`Renew user: ${userName}!`)
   }
 }

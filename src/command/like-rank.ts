@@ -1,6 +1,6 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { limit } from 'jike-sdk/polyfill'
+import { ui } from '../ui'
 import { createClient, displayUser, filterUsers } from '../utils/user'
 import { displayImage, renderDivider } from '../utils/terminal'
 import type { Entity } from 'jike-sdk/polyfill'
@@ -26,7 +26,7 @@ export const likeRank = createCommand('like-rank')
 export const likeRanking = async ({ top, count }: LikeRankOptions) => {
   const [user] = filterUsers()
 
-  const spinner = logger.await('Fetching posts')
+  const spinner = ui.logger.await('Fetching posts')
 
   const client = createClient(user)
   const posts = await client.getSelf().queryPersonalUpdate({
@@ -59,8 +59,8 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
       .map(async ({ user, count }) => {
         const ranking = getRanking(count)
         let text = `${renderRanking(ranking)} ${displayUser(
-          user
-        )} 点赞 ${logger.colors.cyan(`${count}`)} 次，${(
+          user,
+        )} 点赞 ${ui.colors.cyan(`${count}`)} 次，${(
           (count / posts.length) *
           100
         ).toFixed(2)}%`
@@ -71,7 +71,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
           }\n${text}\n${divider}`
         }
         return text
-      })
+      }),
   )
 
   spinner.stop()

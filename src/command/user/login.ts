@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto'
 import enquirer from 'enquirer'
-import { logger } from '@poppinss/cliui'
 import { JikeClient } from 'jike-sdk/polyfill'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { errorAndExit } from '../../utils/log'
 import { config, isSameUser } from '../../utils/config'
 import type { ConfigUser } from '../../utils/config'
@@ -108,7 +108,7 @@ export const loginUser = async () => {
     config.value.users.push(user)
   }
 
-  logger.success('Login success!')
+  ui.logger.success('Login success!')
 }
 
 const questions = {
@@ -161,7 +161,7 @@ const loginWithSms = async (client: JikeClient) => {
     .sendSmsCode(areaCode, mobile)
     .catch((err) => errorAndExit(new Error(err)))
 
-  logger.success('SMS code sent!')
+  ui.logger.success('SMS code sent!')
 
   const { smsCode } = await enquirer.prompt<{ smsCode: string }>({
     type: 'input',

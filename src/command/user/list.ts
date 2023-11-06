@@ -1,5 +1,5 @@
-import { table } from '@poppinss/cliui'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { config } from '../../utils/config'
 
 export const list = createCommand('list')
@@ -8,13 +8,9 @@ export const list = createCommand('list')
   .action(() => listUsers())
 
 export const listUsers = () => {
-  const t = table().head([
-    'Alias',
-    'Endpoint ID',
-    'Endpoint URL',
-    'User ID',
-    'Nickname',
-  ])
+  const t = ui
+    .table()
+    .head(['Alias', 'Endpoint ID', 'Endpoint URL', 'User ID', 'Nickname'])
 
   for (const user of config.value.users) {
     if (!user) continue

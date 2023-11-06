@@ -1,5 +1,5 @@
-import { table } from '@poppinss/cliui'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { printIfRaw } from '../../utils/terminal'
 import { filterUsers } from '../../utils/user'
 
@@ -32,7 +32,7 @@ export const userInfo = () => {
     ['Refresh Token', user.refreshToken],
   ]
 
-  const t = table().columnWidths([20, 70])
+  const t = ui.table().columnWidths([20, 70])
   rows.forEach((row) =>
     t.row([{ content: `${row[0]}:`, hAlign: 'right' }, breakLine(row[1])])
   )

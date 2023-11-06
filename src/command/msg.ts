@@ -1,10 +1,9 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import { limit } from 'jike-sdk/polyfill'
 import { format } from 'date-fns'
+import { ui } from '../ui'
 import { displayImage, printIfRaw, renderDivider } from '../utils/terminal'
 import { createClient, displayUsers, filterUsers } from '../utils/user'
-import type { Spinner } from '@poppinss/cliui/build/src/Logger/Spinner'
 import type { Entity } from 'jike-sdk/polyfill'
 
 interface NotificationOptions {
@@ -29,7 +28,7 @@ const showNotifications = async (opts: NotificationOptions) => {
   const client = createClient(user)
 
   const count = +(opts.count ?? 30)
-  const spinner = logger.await('Loading notifications...')
+  const spinner = ui.logger.await('Loading notifications...')
   const notifications = await client
     .queryNotifications({
       limit: limit.limitMaxCount(count),
@@ -40,19 +39,20 @@ const showNotifications = async (opts: NotificationOptions) => {
             100
           ).toFixed(2)}%)`
         )
+        return true
       },
     })
     .finally(() => spinner.stop())
 
-  logger.success('Loading notifications done!')
+  ui.logger.success('Loading notifications done!')
 
   printIfRaw(notifications)
 
   {
     const divider = renderDivider()
 
-    let spinner: Spinner | undefined
-    if (opts.image) spinner = logger.await('Downloading images')
+    let spinner: ReturnType<typeof ui.logger.await> | undefined
+    if (opts.image) spinner = ui.logger.await('Downloading images')
 
     const texts = (
       await Promise.all(
@@ -75,7 +75,7 @@ async function renderNotification(
 ): Promise<string[]> {
   const users = n.actionItem?.users ?? []
   let usersText = displayUsers(users)
-  const bio = logger.colors.gray(users[0].bio ?? '')
+  const bio = ui.colors.gray(users[0].bio ?? '')
 
   const usersCount = n.actionItem?.usersCount
   if (typeof usersCount === 'number' && users.length !== usersCount) {
@@ -106,7 +106,7 @@ async function renderNotification(
 
   if (texts) {
     const timeStr = format(new Date(n.createdAt), 'yyyy-MM-dd HH:mm:ss')
-    texts.unshift(logger.colors.gray(timeStr))
+    texts.unshift(ui.colors.gray(timeStr))
     return texts.filter((text) => text.trim() !== EMPTY_PLACEHOLDER)
   } else {
     warnUnknownType(n)
@@ -178,7 +178,7 @@ async function renderNotification(
 
 const warnUnknownType = (n: Entity.Notification) => {
   const info = [n.type, n.actionType, n.actionItem.type].join('||')
-  logger.warning(
+  ui.logger.warning(
     `Unknown notification: ${info}. Please send it to developer, thanks!`
   )
 }

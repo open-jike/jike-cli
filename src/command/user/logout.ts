@@ -1,5 +1,5 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { config, isSameUser } from '../../utils/config'
 import { errorAndExit } from '../../utils/log'
 import { displayConfigUser, filterUsers } from '../../utils/user'
@@ -19,7 +19,7 @@ export const logoutUser = (queries: string[]) => {
   cfg.users = cfg.users.filter((user) => {
     const shouldRemove = removes.some((remove) => isSameUser(user, remove))
     if (shouldRemove) {
-      logger.success(`Logout ${displayConfigUser(user)}.`)
+      ui.logger.success(`Logout ${displayConfigUser(user)}.`)
     }
     return !shouldRemove
   })

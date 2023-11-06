@@ -1,6 +1,6 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
 import open from 'open'
+import { ui } from '../../ui'
 import { PROFILE_URL } from '../../constants'
 import { errorAndExit } from '../../utils/log'
 import { createClient, filterUsers } from '../../utils/user'
@@ -39,5 +39,5 @@ export const viewUser = async ({ username, platform }: ViewOptions) => {
   const url = PROFILE_URL[platform] + username
   open(url)
 
-  logger.info(`${url} opened!`)
+  ui.logger.info(`${url} opened!`)
 }

@@ -1,6 +1,6 @@
-import { logger } from '@poppinss/cliui'
 import { program } from 'commander'
 import { JikeClient } from 'jike-sdk/polyfill'
+import { ui } from '../ui'
 import { config } from './config'
 import { errorAndExit } from './log'
 import type { Entity, JikeClientJSON } from 'jike-sdk/polyfill'
@@ -9,8 +9,8 @@ import type { ConfigUser } from './config'
 export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
   const cfg = config.value
   if (cfg.users.length === 0) {
-    logger.warning(`Please login first. Please run the command:`)
-    logger.warning(`$ jike-cli user login\n`)
+    ui.logger.warning(`Please login first. Please run the command:`)
+    ui.logger.warning(`$ jike-cli user login\n`)
     process.exit(1)
   }
 
@@ -39,8 +39,8 @@ export const displayConfigUser = (user: ConfigUser) =>
   user.alias || user.screenName
 
 export const displayUser = (user: Entity.User, displayUsername = false) =>
-  `${logger.colors.yellow(`${user.screenName}`)}${
-    displayUsername ? ` (${logger.colors.gray(user.username)})` : ''
+  `${ui.colors.yellow(`${user.screenName}`)}${
+    displayUsername ? ` (${ui.colors.gray(user.username)})` : ''
   }`
 
 export const displayUsers = (users: Entity.User[], displayUsername = true) => {

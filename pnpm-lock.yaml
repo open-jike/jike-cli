@@ -37,6 +37,9 @@ devDependencies:
   '@sxzz/eslint-config-ts':
     specifier: ^2.4.6
     version: 2.4.6(eslint@8.53.0)(typescript@5.2.2)
+  '@sxzz/prettier-config':
+    specifier: ^1.0.4
+    version: 1.0.4
   '@types/node':
     specifier: ^20.8.10
     version: 20.8.10
@@ -1256,6 +1259,10 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: true
+
+  /@sxzz/prettier-config@1.0.4:
+    resolution: {integrity: sha512-KqgPNwMYloKI+LGAW8LwS0hEJHgwnrIJjgQC0B/saoDJZKUIrqc+lLme/lobrzBetPNhrCuhSDELRrZTg32l0w==}
     dev: true
 
   /@tokenizer/token@0.3.0:

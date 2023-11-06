@@ -1,6 +1,6 @@
 import { createCommand } from 'commander'
 import { limit } from 'jike-sdk/polyfill'
-import { logger } from '@poppinss/cliui'
+import { ui } from '../../ui'
 import { createClient, displayUser, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw, renderDivider } from '../../utils/terminal'
 import { isMacOS } from '../../utils/os'
@@ -47,8 +47,8 @@ async function renderPost(p: JikePostWithDetail) {
   const texts: string[] = []
   if (detail.type === 'ORIGINAL_POST') {
     const link = isMacOS
-      ? logger.colors.gray(
-          logger.colors.underline(`jike://page.jk/originalPost/${p.id}`)
+      ? ui.colors.gray(
+          ui.colors.underline(`jike://page.jk/originalPost/${p.id}`)
         )
       : ''
     texts.push(
@@ -69,8 +69,8 @@ async function renderPost(p: JikePostWithDetail) {
     if (detail.linkInfo) {
       texts.push(
         (await displayImage(detail.linkInfo.pictureUrl)).result,
-        `分享链接 [${detail.linkInfo.title}](${logger.colors.blue(
-          logger.colors.underline(detail.linkInfo.linkUrl)
+        `分享链接 [${detail.linkInfo.title}](${ui.colors.blue(
+          ui.colors.underline(detail.linkInfo.linkUrl)
         )})`
       )
     }

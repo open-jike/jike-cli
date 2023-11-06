@@ -1,6 +1,6 @@
-import { logger } from '@poppinss/cliui'
+import { ui } from '../ui'
 
 export function errorAndExit(error: Error): never {
-  logger.error(error)
+  ui.logger.error(error)
   process.exit(1)
 }

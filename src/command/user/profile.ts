@@ -1,13 +1,13 @@
 import { createCommand } from 'commander'
-import { logger, sticker, table } from '@poppinss/cliui'
 import { format } from 'date-fns'
+import { ui } from '../../ui'
 import { createClient, filterUsers } from '../../utils/user'
 import { displayImage, printIfRaw } from '../../utils/terminal'
 import { PROFILE_URL } from '../../constants'
 import { isMacOS } from '../../utils/os'
 import type { ApiResponses } from 'jike-sdk/polyfill'
 
-const { colors } = logger
+const { colors, table, sticker } = ui
 
 export interface ProfileOptions {
   username?: string

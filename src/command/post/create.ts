@@ -4,8 +4,8 @@ import { spawnSync } from 'node:child_process'
 import { createCommand } from 'commander'
 import { ApiOptions } from 'jike-sdk/polyfill'
 import { format } from 'date-fns'
-import { logger, sticker } from '@poppinss/cliui'
 import enquirer from 'enquirer'
+import { ui } from '../../ui'
 import { configDir } from '../../utils/config'
 import { createClient, displayConfigUser, filterUsers } from '../../utils/user'
 import { errorAndExit } from '../../utils/log'
@@ -41,7 +41,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
     spawnSync('vim', [draftFile], { stdio: 'inherit' })
 
     content = await readFile(draftFile, 'utf-8').catch((err) => {
-      logger.warning(err)
+      ui.logger.warning(err)
       return ''
     })
   }
@@ -51,7 +51,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
     errorAndExit(new Error('Content is required.'))
   }
 
-  const s = sticker().heading('✍️ Content')
+  const s = ui.sticker().heading('✍️ Content')
   content.split('\n').forEach((line) => s.add(line))
   s.render()
 
@@ -64,7 +64,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
     initial: true,
   })
   if (!isConfirm) {
-    logger.error('User canceled.')
+    ui.logger.error('User canceled.')
     return
   }
 
@@ -74,9 +74,9 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
       .createPost(ApiOptions.PostType.ORIGINAL, content, {
         topicId: topic,
       })
-      .catch((err) => logger.fatal(err))
-    logger.success(
-      `${logger.colors.bold(displayConfigUser(user))} posted successfully!`
+      .catch((err) => ui.logger.fatal(err))
+    ui.logger.success(
+      `${ui.colors.bold(displayConfigUser(user))} posted successfully!`
     )
   }
 }

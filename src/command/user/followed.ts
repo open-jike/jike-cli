@@ -1,5 +1,5 @@
-import { logger } from '@poppinss/cliui'
 import { createCommand } from 'commander'
+import { ui } from '../../ui'
 import { createClient, filterUsers } from '../../utils/user'
 
 export const followed = createCommand('followed')
@@ -38,5 +38,5 @@ export const isFollowed = async (following?: string, follower?: string) => {
     mode
   )
 
-  logger.info(isFollowed ? 'Followed!' : 'Not followed.')
+  ui.logger.info(isFollowed ? 'Followed!' : 'Not followed.')
 }
