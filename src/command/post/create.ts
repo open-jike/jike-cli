@@ -36,7 +36,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
 
     const draftFile = path.resolve(
       draftDir,
-      `${format(new Date(), 'yyyy-MM-dd-HH-mm-ss')}.txt`
+      `${format(new Date(), 'yyyy-MM-dd-HH-mm-ss')}.txt`,
     )
     spawnSync('vim', [draftFile], { stdio: 'inherit' })
 
@@ -76,7 +76,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
       })
       .catch((err) => ui.logger.fatal(err))
     ui.logger.success(
-      `${ui.colors.bold(displayConfigUser(user))} posted successfully!`
+      `${ui.colors.bold(displayConfigUser(user))} posted successfully!`,
     )
   }
 }

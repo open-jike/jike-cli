@@ -44,7 +44,7 @@ const viewFeeds = async (opts: FeedOptions) => {
 }
 
 async function renderPost(
-  p: JikePostWithDetail | ({ actionTime: string } & Entity.PersonalUpdate)
+  p: JikePostWithDetail | ({ actionTime: string } & Entity.PersonalUpdate),
 ) {
   const texts: string[] = []
   if (p.type === 'PERSONAL_UPDATE') {
@@ -56,12 +56,12 @@ async function renderPost(
           // @ts-expect-error
           (await displayImage(p.live.picture.picUrl)).result,
           // @ts-expect-error
-          p.live.title
+          p.live.title,
         )
         break
       case 'USER_FOLLOW':
         texts.push(
-          `${displayUsers(p.users)} 关注了 ${displayUsers(p.targetUsers)}`
+          `${displayUsers(p.users)} 关注了 ${displayUsers(p.targetUsers)}`,
         )
         break
       default:
@@ -71,7 +71,7 @@ async function renderPost(
     const detail = p.detail as Entity.OriginalPost
     const link = isMacOS
       ? ui.colors.gray(
-          ui.colors.underline(`jike://page.jk/originalPost/${p.id}`)
+          ui.colors.underline(`jike://page.jk/originalPost/${p.id}`),
         )
       : ''
     texts.push(
@@ -79,13 +79,13 @@ async function renderPost(
       `${displayUser(detail.user)}${
         detail.topic ? ` [${detail.topic.content}]` : ''
       }: ${link}`,
-      detail.content
+      detail.content,
     )
     if (detail.pictures && detail.pictures.length > 0) {
       const images = await Promise.all(
         detail.pictures.map((p) =>
-          displayImage(p.middlePicUrl).then(({ result }) => `${result}\n`)
-        )
+          displayImage(p.middlePicUrl).then(({ result }) => `${result}\n`),
+        ),
       )
       texts.push(...images)
     }
@@ -93,8 +93,8 @@ async function renderPost(
       texts.push(
         (await displayImage(detail.linkInfo.pictureUrl)).result,
         `分享链接 [${detail.linkInfo.title}](${ui.colors.blue(
-          ui.colors.underline(detail.linkInfo.linkUrl)
-        )})`
+          ui.colors.underline(detail.linkInfo.linkUrl),
+        )})`,
       )
     }
   } else {

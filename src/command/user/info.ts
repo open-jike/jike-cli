@@ -34,7 +34,7 @@ export const userInfo = () => {
 
   const t = ui.table().columnWidths([20, 70])
   rows.forEach((row) =>
-    t.row([{ content: `${row[0]}:`, hAlign: 'right' }, breakLine(row[1])])
+    t.row([{ content: `${row[0]}:`, hAlign: 'right' }, breakLine(row[1])]),
   )
   t.render()
 }

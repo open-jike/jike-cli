@@ -24,8 +24,8 @@ export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
       (user) =>
         user.alias === query ||
         user.userId === query ||
-        user.screenName === query
-    )
+        user.screenName === query,
+    ),
   )
 
   if (users.length === 0) {
