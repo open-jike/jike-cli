@@ -4,8 +4,7 @@ import { JikeClient } from 'jike-sdk'
 import { createCommand } from 'commander'
 import { ui } from '../../ui'
 import { errorAndExit } from '../../utils/log'
-import { config, isSameUser } from '../../utils/config'
-import type { ConfigUser } from '../../utils/config'
+import { type ConfigUser, config, isSameUser } from '../../utils/config'
 
 export const login = createCommand('login')
   .description('login or re-login a user')
@@ -148,7 +147,7 @@ const loginWithPassword = async (client: JikeClient) => {
 
   await client
     .loginWithPassword(areaCode, mobile, password)
-    .catch((err) => errorAndExit(new Error(err)))
+    .catch((error) => errorAndExit(new Error(error)))
 }
 
 const loginWithSms = async (client: JikeClient) => {
@@ -159,7 +158,7 @@ const loginWithSms = async (client: JikeClient) => {
 
   await client
     .sendSmsCode(areaCode, mobile)
-    .catch((err) => errorAndExit(new Error(err)))
+    .catch((error) => errorAndExit(new Error(error)))
 
   ui.logger.success('SMS code sent!')
 
@@ -172,5 +171,5 @@ const loginWithSms = async (client: JikeClient) => {
 
   await client
     .loginWithSmsCode(areaCode, mobile, smsCode)
-    .catch((err) => errorAndExit(new Error(err)))
+    .catch((error) => errorAndExit(new Error(error)))
 }

@@ -16,9 +16,9 @@ export const renewUsers = async () => {
     const client = createClient(user)
     try {
       await client.renewToken().finally(() => spinner.stop())
-    } catch (err: any) {
+    } catch (error: any) {
       ui.logger.error(`Renew user ${userName} failed!`)
-      ui.logger.error(err)
+      ui.logger.error(error)
       continue
     }
     ui.logger.success(`Renew user: ${userName}!`)

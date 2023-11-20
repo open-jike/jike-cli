@@ -1,9 +1,8 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk'
+import { type Entity, limit } from 'jike-sdk'
 import { ui } from '../ui'
 import { createClient, displayUser, filterUsers } from '../utils/user'
 import { displayImage, renderDivider } from '../utils/terminal'
-import type { Entity } from 'jike-sdk'
 
 interface LikeRankOptions {
   top: number

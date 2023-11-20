@@ -40,8 +40,8 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
     )
     spawnSync('vim', [draftFile], { stdio: 'inherit' })
 
-    content = await readFile(draftFile, 'utf-8').catch((err) => {
-      ui.logger.warning(err)
+    content = await readFile(draftFile, 'utf-8').catch((error) => {
+      ui.logger.warning(error)
       return ''
     })
   }
@@ -74,7 +74,7 @@ export const createPost = async ({ content, topic }: CreateOptions) => {
       .createPost(ApiOptions.PostType.ORIGINAL, content, {
         topicId: topic,
       })
-      .catch((err) => ui.logger.fatal(err))
+      .catch((error) => ui.logger.fatal(error))
     ui.logger.success(
       `${ui.colors.bold(displayConfigUser(user))} posted successfully!`,
     )

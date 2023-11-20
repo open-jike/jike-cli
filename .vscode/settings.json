@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["jike"]
+  "cSpell.words": ["jike"],
+  "eslint.experimental.useFlatConfig": true
 }

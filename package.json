@@ -14,8 +14,8 @@
     "url": "git+https://github.com/open-jike/jike-cli.git"
   },
   "files": [
-    "dist",
-    "bin"
+    "bin",
+    "dist"
   ],
   "main": "./dist/index.js",
   "bin": "./bin/jike-cli.js",
@@ -25,8 +25,8 @@
   "scripts": {
     "start": "node ./bin/jike-cli.js",
     "dev": "tsx src/index.ts",
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "lint:fix": "eslint . --fix --ext .js,.ts,.jsx,.tsx",
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
     "build": "tsup",
     "release": "bumpp && npm publish",
     "prepublishOnly": "pnpm run build"
@@ -42,14 +42,12 @@
     "terminal-image": "^2.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^2.4.6",
-    "@sxzz/eslint-config-ts": "^2.4.6",
+    "@sxzz/eslint-config": "^3.7.4",
     "@sxzz/prettier-config": "^2.0.0",
     "@types/node": "^20.9.2",
     "bumpp": "^9.2.0",
     "date-fns": "^2.30.0",
     "eslint": "^8.54.0",
-    "eslint-define-config": "^1.24.1",
     "fast-glob": "^3.3.2",
     "prettier": "^3.1.0",
     "tsup": "^8.0.0",

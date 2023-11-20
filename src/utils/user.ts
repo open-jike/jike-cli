@@ -1,10 +1,8 @@
 import { program } from 'commander'
-import { JikeClient } from 'jike-sdk'
+import { type Entity, JikeClient, type JikeClientJSON } from 'jike-sdk'
 import { ui } from '../ui'
-import { config } from './config'
+import { type ConfigUser, config } from './config'
 import { errorAndExit } from './log'
-import type { Entity, JikeClientJSON } from 'jike-sdk'
-import type { ConfigUser } from './config'
 
 export const filterUsers = (customQueries?: string[], allowEmpty = true) => {
   const cfg = config.value
@@ -47,8 +45,8 @@ export const displayUsers = (users: Entity.User[], displayUsername = true) => {
   return users.length > 1
     ? users.map((user) => displayUser(user)).join(', ')
     : users[0]
-    ? displayUser(users[0], displayUsername)
-    : '-'
+      ? displayUser(users[0], displayUsername)
+      : '-'
 }
 
 export const createClient = (data: JikeClientJSON) => {

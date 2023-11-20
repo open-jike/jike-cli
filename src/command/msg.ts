@@ -1,10 +1,9 @@
 import { createCommand } from 'commander'
-import { limit } from 'jike-sdk'
+import { type Entity, limit } from 'jike-sdk'
 import { format } from 'date-fns'
 import { ui } from '../ui'
 import { displayImage, printIfRaw, renderDivider } from '../utils/terminal'
 import { createClient, displayUsers, filterUsers } from '../utils/user'
-import type { Entity } from 'jike-sdk'
 
 interface NotificationOptions {
   avatar?: boolean
