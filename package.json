@@ -44,7 +44,7 @@
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^2.4.6",
     "@sxzz/eslint-config-ts": "^2.4.6",
-    "@sxzz/prettier-config": "^1.0.4",
+    "@sxzz/prettier-config": "^2.0.0",
     "@types/node": "^20.9.2",
     "bumpp": "^9.2.0",
     "date-fns": "^2.30.0",
