@@ -23,7 +23,7 @@ Example call:
   $ jike-cli user info
   $ jike-cli user alias -u <user> <alias>
   $ jike-cli user followed -f 5C505995-681E-4C1E-AD4A-1CC683627B6E
-`
+`,
   )
   .usage('<command> [flags]')
   .addCommand(renew)

@@ -13,7 +13,7 @@ Example call:
   $ jike-cli post new --content="hello world"
   $ jike-cli post feed
   $ jike-cli post list
-`
+`,
   )
   .usage('<command> [flags]')
   .addCommand(create)

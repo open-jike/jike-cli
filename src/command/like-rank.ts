@@ -59,7 +59,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
       .map(async ({ user, count }) => {
         const ranking = getRanking(count)
         let text = `${renderRanking(ranking)} ${displayUser(
-          user
+          user,
         )} 点赞 ${ui.colors.cyan(`${count}`)} 次，${(
           (count / posts.length) *
           100
@@ -71,7 +71,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
           }\n${text}\n${divider}`
         }
         return text
-      })
+      }),
   )
 
   spinner.stop()

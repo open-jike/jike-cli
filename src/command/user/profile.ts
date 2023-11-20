@@ -44,7 +44,7 @@ export const queryProfile = async ({
   const createdAt = new Date(result.user.createdAt)
   const createdAtStr = format(
     new Date(result.user.createdAt),
-    'yyyy-MM-dd HH:mm:ss'
+    'yyyy-MM-dd HH:mm:ss',
   )
   const createdDays = (
     (Date.now() - createdAt.valueOf()) /
@@ -53,7 +53,7 @@ export const queryProfile = async ({
   ).toFixed(2)
 
   const isMyProfile = (
-    profile: ApiResponses.Users.Profile
+    profile: ApiResponses.Users.Profile,
   ): profile is ApiResponses.Users.MyProfile => profile.user.id === user.userId
 
   const formatFollowedCount = (count: number) =>
@@ -83,7 +83,7 @@ export const queryProfile = async ({
       [
         `动态获得 ${colors.bold(`${result.user.statsCount.liked}`)} 次赞`,
         `获得 ${colors.bold(
-          `${result.user.statsCount.highlightedPersonalUpdates}`
+          `${result.user.statsCount.highlightedPersonalUpdates}`,
         )} 次精选`,
       ],
     ]
@@ -93,7 +93,7 @@ export const queryProfile = async ({
       if (profileVisitInfo)
         texts.push([
           `最近访客：${colors.yellow(
-            profileVisitInfo.latestVisitor.screenName
+            profileVisitInfo.latestVisitor.screenName,
           )}`,
           colors.gray(profileVisitInfo.latestVisitor.username),
         ])
@@ -105,14 +105,14 @@ export const queryProfile = async ({
       ['Mobile', colors.underline(PROFILE_URL.mobile + result.user.username)],
       isMacOS
         ? [' macOS', colors.underline(PROFILE_URL.mac + result.user.username)]
-        : []
+        : [],
     )
 
     const lines = texts.flatMap((fields) =>
       fields
         .filter((field) => !!field)
         .join(' | ')
-        .split('\n')
+        .split('\n'),
     )
 
     const s = sticker()
@@ -123,7 +123,7 @@ export const queryProfile = async ({
   function showTable() {
     const fields: Record<string, string> = {
       昵称: `${colors.yellow(result.user.screenName)} (${colors.gray(
-        result.user.username
+        result.user.username,
       )})`,
       性别: toGender(result.user.gender),
       个性签名: result.user.bio,
@@ -142,7 +142,7 @@ export const queryProfile = async ({
       if (profileVisitInfo) {
         const { latestVisitor } = profileVisitInfo
         fields['最近访客'] = `${colors.yellow(
-          latestVisitor.screenName
+          latestVisitor.screenName,
         )} (${colors.gray(latestVisitor.username)})`
       }
     }
@@ -150,7 +150,7 @@ export const queryProfile = async ({
     const t = table()
     t.columnWidths([15, 65])
     Object.entries(fields).forEach(([key, value]) =>
-      t.row([{ content: key, hAlign: 'right' }, value])
+      t.row([{ content: key, hAlign: 'right' }, value]),
     )
     t.render()
   }

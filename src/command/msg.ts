@@ -37,7 +37,7 @@ const showNotifications = async (opts: NotificationOptions) => {
           `Loading notifications... (page ${page}, ${+(
             (data.length / count) *
             100
-          ).toFixed(2)}%)`
+          ).toFixed(2)}%)`,
         )
         return true
       },
@@ -57,8 +57,8 @@ const showNotifications = async (opts: NotificationOptions) => {
     const texts = (
       await Promise.all(
         notifications.map((n) =>
-          renderNotification(n, opts).then((result) => [...result, divider])
-        )
+          renderNotification(n, opts).then((result) => [...result, divider]),
+        ),
       ).finally(() => spinner?.stop())
     ).flat()
     texts.unshift(divider)
@@ -71,7 +71,7 @@ const EMPTY_PLACEHOLDER = '(EMPTY)'
 
 async function renderNotification(
   n: Entity.Notification,
-  { avatar, image }: NotificationOptions
+  { avatar, image }: NotificationOptions,
 ): Promise<string[]> {
   const users = n.actionItem?.users ?? []
   let usersText = displayUsers(users)
@@ -179,6 +179,6 @@ async function renderNotification(
 const warnUnknownType = (n: Entity.Notification) => {
   const info = [n.type, n.actionType, n.actionItem.type].join('||')
   ui.logger.warning(
-    `Unknown notification: ${info}. Please send it to developer, thanks!`
+    `Unknown notification: ${info}. Please send it to developer, thanks!`,
   )
 }

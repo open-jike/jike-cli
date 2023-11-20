@@ -17,7 +17,7 @@ export const view = createCommand('view')
   .option(
     '-p, --platform <platform>',
     'supports web, mobile and mac, default is web',
-    'web'
+    'web',
   )
   .action((username?: string) => {
     const opts = view.opts<ViewOptions>()

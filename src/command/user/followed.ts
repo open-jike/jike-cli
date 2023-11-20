@@ -35,7 +35,7 @@ export const isFollowed = async (following?: string, follower?: string) => {
 
   const isFollowed = await getUser(following).isFollowing(
     getUser(follower),
-    mode
+    mode,
   )
 
   ui.logger.info(isFollowed ? 'Followed!' : 'Not followed.')

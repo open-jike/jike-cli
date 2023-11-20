@@ -48,7 +48,7 @@ async function renderPost(p: JikePostWithDetail) {
   if (detail.type === 'ORIGINAL_POST') {
     const link = isMacOS
       ? ui.colors.gray(
-          ui.colors.underline(`jike://page.jk/originalPost/${p.id}`)
+          ui.colors.underline(`jike://page.jk/originalPost/${p.id}`),
         )
       : ''
     texts.push(
@@ -56,13 +56,13 @@ async function renderPost(p: JikePostWithDetail) {
       `${displayUser(detail.user)}${
         detail.topic ? ` [${detail.topic.content}]` : ''
       }: ${link}`,
-      detail.content
+      detail.content,
     )
     if (detail.pictures && detail.pictures.length > 0) {
       const images = await Promise.all(
         detail.pictures.map((p) =>
-          displayImage(p.middlePicUrl).then(({ result }) => result)
-        )
+          displayImage(p.middlePicUrl).then(({ result }) => result),
+        ),
       )
       texts.push(...images)
     }
@@ -70,8 +70,8 @@ async function renderPost(p: JikePostWithDetail) {
       texts.push(
         (await displayImage(detail.linkInfo.pictureUrl)).result,
         `分享链接 [${detail.linkInfo.title}](${ui.colors.blue(
-          ui.colors.underline(detail.linkInfo.linkUrl)
-        )})`
+          ui.colors.underline(detail.linkInfo.linkUrl),
+        )})`,
       )
     }
   } else {
