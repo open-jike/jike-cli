@@ -1,6 +1,6 @@
 {
   "name": "jike-cli",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "packageManager": "pnpm@8.15.0",
   "description": "Jike CLI",
   "type": "module",
