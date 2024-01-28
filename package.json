@@ -1,7 +1,7 @@
 {
   "name": "jike-cli",
   "version": "0.10.0",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.15.0",
   "description": "Jike CLI",
   "type": "module",
   "license": "AGPL-3.0",
@@ -32,27 +32,27 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@poppinss/cliui": "^6.2.1",
+    "@poppinss/cliui": "^6.3.0",
     "@vue-reactivity/fs": "^0.1.1",
     "commander": "^11.1.0",
     "enquirer": "^2.4.1",
     "eventemitter3": "^5.0.1",
     "jike-sdk": "^0.26.1",
-    "open": "^10.0.1",
+    "open": "^10.0.3",
     "terminal-image": "^2.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^3.7.4",
+    "@sxzz/eslint-config": "^3.7.6",
     "@sxzz/prettier-config": "^2.0.0",
-    "@types/node": "^20.9.2",
-    "bumpp": "^9.2.0",
-    "date-fns": "^3.2.0",
-    "eslint": "^8.54.0",
+    "@types/node": "^20.11.9",
+    "bumpp": "^9.3.0",
+    "date-fns": "^3.3.1",
+    "eslint": "^8.56.0",
     "fast-glob": "^3.3.2",
-    "prettier": "^3.1.0",
-    "tsup": "^8.0.0",
-    "tsx": "^4.1.4",
-    "typescript": "^5.2.2"
+    "prettier": "^3.2.4",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.12.0"
