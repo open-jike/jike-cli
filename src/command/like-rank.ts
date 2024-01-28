@@ -35,10 +35,10 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
   })
 
   const userMap: Record<string, { user: Entity.User; count: number }> = {}
-  const repositoryErrorCount: Record<string, number> = {} // Track the error count for each repository
+  const postErrorCount: Record<string, number> = {} // Track the error count for each post
   for (const [i, post] of posts.entries()) {
     spinner.update(`Fetching post (${i + 1} / ${posts.length})`)
-    const repositoryId = post.id
+    const pid = post.id
 
     let retryCount = 0
     let success = false
@@ -55,8 +55,7 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
         success = true // Mark success to exit the loop
       } catch {
         retryCount++
-        repositoryErrorCount[repositoryId] =
-          (repositoryErrorCount[repositoryId] || 0) + 1
+        postErrorCount[pid] = (postErrorCount[pid] || 0) + 1
 
         if (retryCount < maxRetries) {
           await new Promise((resolve) => setTimeout(resolve, retryDelay)) // Wait for the specified delay
@@ -71,10 +70,8 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
         } after ${maxRetries} attempts.`,
       )
 
-      if (repositoryErrorCount[repositoryId] >= 3) {
-        console.error(
-          `Exiting due to repeated failures for repository ${repositoryId}`,
-        )
+      if (postErrorCount[pid] >= 3) {
+        console.error(`Exiting due to repeated failures for post ${pid}`)
         process.exit(1) // Exit the process with an error code
       }
     }
