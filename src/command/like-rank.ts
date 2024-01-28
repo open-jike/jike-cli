@@ -21,6 +21,8 @@ export const likeRank = createCommand('like-rank')
       count: +opts.count,
     })
   })
+const maxRetries = 3 // Set the maximum number of retries
+const retryDelay = 1000 // Set the delay between retries in milliseconds
 
 export const likeRanking = async ({ top, count }: LikeRankOptions) => {
   const [user] = filterUsers()
@@ -33,14 +35,45 @@ export const likeRanking = async ({ top, count }: LikeRankOptions) => {
   })
 
   const userMap: Record<string, { user: Entity.User; count: number }> = {}
+  const postErrorCount: Record<string, number> = {} // Track the error count for each post
   for (const [i, post] of posts.entries()) {
     spinner.update(`Fetching post (${i + 1} / ${posts.length})`)
+    const pid = post.id
 
-    const users = await post.listLikedUsers()
-    for (const user of users) {
-      const id = user.id
-      if (!userMap[id]) userMap[id] = { user, count: 1 }
-      else userMap[id].count++
+    let retryCount = 0
+    let success = false
+
+    while (!success && retryCount < maxRetries) {
+      try {
+        const users = await post.listLikedUsers()
+        for (const user of users) {
+          const id = user.id
+          if (!userMap[id]) userMap[id] = { user, count: 1 }
+          else userMap[id].count++
+        }
+
+        success = true // Mark success to exit the loop
+      } catch {
+        retryCount++
+        postErrorCount[pid] = (postErrorCount[pid] || 0) + 1
+
+        if (retryCount < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, retryDelay)) // Wait for the specified delay
+        }
+      }
+    }
+
+    if (!success) {
+      console.error(
+        `Failed to fetch liked users for post ${
+          i + 1
+        } after ${maxRetries} attempts.`,
+      )
+
+      if (postErrorCount[pid] >= 3) {
+        console.error(`Exiting due to repeated failures for post ${pid}`)
+        process.exit(1) // Exit the process with an error code
+      }
     }
   }
 
