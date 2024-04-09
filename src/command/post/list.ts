@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { createCommand } from 'commander'
 import { type JikePostWithDetail, limit } from 'jike-sdk'
 import { ui } from '../../ui'

@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { createCommand } from 'commander'
 import { type Entity, limit } from 'jike-sdk'
 import { ui } from '../ui'
