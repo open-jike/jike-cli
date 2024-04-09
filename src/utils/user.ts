@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { program } from 'commander'
 import { type Entity, JikeClient, type JikeClientJSON } from 'jike-sdk'
 import { ui } from '../ui'

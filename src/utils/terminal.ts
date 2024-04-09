@@ -1,3 +1,5 @@
+import process from 'node:process'
+import { Buffer } from 'node:buffer'
 import { program } from 'commander'
 import terminalImage from 'terminal-image'
 import { ui } from '../ui'

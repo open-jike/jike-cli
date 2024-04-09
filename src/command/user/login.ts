@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { randomUUID } from 'node:crypto'
 import enquirer from 'enquirer'
 import { JikeClient } from 'jike-sdk'

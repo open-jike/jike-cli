@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { createCommand } from 'commander'
 import { ui } from '../../ui'
 import { filterUsers } from '../../utils/user'
