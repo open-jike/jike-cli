@@ -39,7 +39,7 @@
     "eventemitter3": "^5.0.1",
     "jike-sdk": "^0.27.0",
     "open": "^10.1.0",
-    "terminal-image": "^2.0.0"
+    "terminal-image": "^3.0.0"
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^3.9.0",
