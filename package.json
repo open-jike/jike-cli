@@ -1,7 +1,7 @@
 {
   "name": "jike-cli",
   "version": "0.10.1",
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@9.15.9",
   "description": "Jike CLI",
   "type": "module",
   "license": "AGPL-3.0",
@@ -37,7 +37,7 @@
     "commander": "^11.1.0",
     "enquirer": "^2.4.1",
     "eventemitter3": "^5.0.1",
-    "jike-sdk": "^0.27.0",
+    "jike-sdk": "^0.28.0",
     "open": "^10.1.0",
     "terminal-image": "^3.0.0"
   },
